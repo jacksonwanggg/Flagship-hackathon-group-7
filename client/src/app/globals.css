@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -14,6 +14,20 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
+}
+
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 400 to 700 */
+
+.caveat-font {
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Caveat', sans-serif;
 }
 
 html,
@@ -33,6 +47,7 @@ body,
   height: 932px;
   overflow: wrap;
   border: 1px solid #000;
+  font-family: 'caveat-font', sans-serif;
   /* Optional: for visual debugging */
 }
 

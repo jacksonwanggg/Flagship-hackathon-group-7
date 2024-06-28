@@ -1,7 +1,7 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Caveat } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Caveat({ subsets: ["latin"] });
 
 export const metadata = {
 	title: "FitPets",
@@ -15,9 +15,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${inter.className} app-container`}>
-				{children}
-			</body>
+			<body className={`app-container`}>{children}</body>
 		</html>
 	);
 }
