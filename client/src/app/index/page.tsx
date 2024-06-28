@@ -4,3 +4,4 @@ export default function Home() {
 			Filler
 		</main>
 	);
+}
