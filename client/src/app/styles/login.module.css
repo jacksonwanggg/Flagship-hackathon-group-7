@@ -1,0 +1,14 @@
+/* src/styles/login.module.css */
+.loginPage {
+    background-image: url('/loginPage.png');
+    height: 100vh;
+    width: 100vw;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
