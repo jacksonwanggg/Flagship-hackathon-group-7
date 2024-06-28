@@ -58,6 +58,7 @@ body,
   align-items: center;
   width: 100%;
   height: 50px;
+  z-index: 1000;
   /* Adjust as necessary */
   position: absolute;
   bottom: 0;
