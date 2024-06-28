@@ -12,7 +12,7 @@ export default function Navbar() {
 	const { activePage, setActivePage } = useContext(PageContext);
 
 	return (
-		<div className="btm-nav">
+		<div className="btm-nav relative bottom-0">
 			<Link
 				href="/home"
 				className={activePage == "home" ? "active" : ""}

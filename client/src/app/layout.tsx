@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, createContext, useContext } from "react";
+import { usePathname } from "next/navigation";
 import "./globals.css";
 import { Caveat } from "next/font/google";
 import Navbar from "@/components/Navbar";
@@ -28,13 +29,16 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	const [activePage, setActivePage] = useState("home");
+	const pathname = usePathname();
 
 	return (
 		<html lang="en">
 			<body className={`app-container ${inter.className}`}>
 				<PageContext.Provider value={{ activePage, setActivePage }}>
-					<Navbar />
-					<div>{children}</div>
+					<div className="app-container">
+						{pathname !== "/login" && <Navbar />}
+						<div>{children}</div>
+					</div>
 				</PageContext.Provider>
 			</body>
 		</html>
