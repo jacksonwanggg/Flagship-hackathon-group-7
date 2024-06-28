@@ -23,7 +23,7 @@ export const PageContext = createContext<PageContextType>({
 });
 
 export default function RootLayout({
-children,
+	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
@@ -33,10 +33,7 @@ children,
 		<html lang="en">
 			<body className={`app-container ${inter.className}`}>
 				<PageContext.Provider value={{ activePage, setActivePage }}>
-<<<<<<< HEAD
 					<Navbar />
-=======
->>>>>>> 97e3296 (added navbar clicking functionality)
 					<div>{children}</div>
 				</PageContext.Provider>
 			</body>
