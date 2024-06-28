@@ -12,8 +12,8 @@ export default function Leaderboard() {
                 <p>global</p>
             </div>
             <PlayerCard name='Andrew' level='500' petAmount={80} questAmount={120} />
-            <PlayerCard name='Andrew' level='500' petAmount={80} questAmount={120} />
-            <PlayerCard name='Andrew' level='500' petAmount={80} questAmount={120} />
+            <PlayerCard name='Eric' level='200' petAmount={42} questAmount={23} />
+            <PlayerCard name='Jackson' level='10' petAmount={23} questAmount={10} />
         </div>
     )
 }
