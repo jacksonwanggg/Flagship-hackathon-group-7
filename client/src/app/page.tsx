@@ -7,13 +7,10 @@ import Home from "./index/page";
 import { PageContext } from "./layout";
 
 export default function Page() {
-	const { activePage, setActivePage } = useContext(PageContext);
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-between p-10">
 			{/* <Home></Home> */}
-			<Navbar
-				activePage={activePage}
-				setActivePage={setActivePage}></Navbar>
+			<Navbar />
 		</main>
 	);
 }

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { MdOutlineLeaderboard } from "react-icons/md";
+import { MdLeaderboard } from "react-icons/md";
 import { IoHome } from "react-icons/io5";
 import { MdOutlinePets } from "react-icons/md";
 import { PageContext } from "../app/layout";
@@ -30,7 +30,7 @@ export default function Navbar() {
 				<button
 					className={activePage == "leaderboard" ? "active" : ""}
 					onClick={() => setActivePage("leaderboard")}>
-					<MdOutlineLeaderboard />
+					<MdLeaderboard   />
 				</button>
 				Leaderboard
 			</Link>
