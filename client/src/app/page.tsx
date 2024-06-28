@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import React from "react";
+import React, { useContext } from "react";
 import Home from "./index/page";
-import { useState } from "react";
+import { PageContext } from "./layout";
 
 export default function Page() {
-	const [activePage, setActivePage] = useState("home");
+	const { activePage, setActivePage } = useContext(PageContext);
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-between p-10">
 			{/* <Home></Home> */}
