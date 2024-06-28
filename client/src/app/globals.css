@@ -51,6 +51,12 @@ body,
   /* Optional: for visual debugging */
 }
 
+.vertical-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 
 body {
   color: rgb(var(--foreground-rgb));
