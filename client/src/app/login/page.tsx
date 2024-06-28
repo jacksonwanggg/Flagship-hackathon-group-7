@@ -1,18 +1,9 @@
 // src/pages/login.tsx
 import React from 'react';
-import Head from 'next/head';
-import styles from '../styles/login.module.css';
+import LoginPage from '../../pages/Login';
 
 const Login = () => {
-  return (
-    <>
-      <Head>
-        <title>Login Page</title>
-      </Head>
-      <div className={styles.loginPage}>
-      </div>
-    </>
-  );
+  return <LoginPage />;
 };
 
 export default Login;
