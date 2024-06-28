@@ -1,16 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
+import PlayerCard from '@/components/PlayerCard';// Assuming the correct path is '../components/PlayerCard/PlayerCard'
 
 export default function Leaderboard() {
     return (
         <div className="w-full h-screen bg-[#ebfbee]">
-            <p className='text-2xl flex justify-center'>Leaderboard</p>
-            <div className='flex flex-row w-full justify-center'>
+            <p className='text-4xl flex justify-center'>Leaderboard</p>
+            <div className='flex flex-row w-full justify-center gap-4'>
                 <p>friends</p>
                 <p>|</p>
                 <p>global</p>
             </div>
-            <p>gg</p>
+            <PlayerCard name='Andrew' level='500' petAmount={80} questAmount={120} />
+            <PlayerCard name='Andrew' level='500' petAmount={80} questAmount={120} />
+            <PlayerCard name='Andrew' level='500' petAmount={80} questAmount={120} />
         </div>
     )
 }
