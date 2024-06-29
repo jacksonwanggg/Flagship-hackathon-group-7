@@ -3,6 +3,9 @@ import Image from 'next/image';
 
 interface PlayerCardProps {
     img: string;
+    img1: string;
+    img2: string;
+    img3: string;
     name: string;
     level: number;
     petAmount: number;
@@ -10,7 +13,7 @@ interface PlayerCardProps {
     delay: string;
 }
 
-const PlayerCard: React.FC<PlayerCardProps> = ({img, name, level, petAmount, questAmount, delay}) => {   
+const PlayerCard: React.FC<PlayerCardProps> = ({img, img1, img2, img3, name, level, petAmount, questAmount, delay}) => {   
     return (
         <div className={`w-[90%] my-4 mx-6 flex justify-center bg-[#ffffff] border-2 border-black rounded-2xl animate-slideRight transform -translate-x-full ease-in-out shadow-xl}`}
         style={{ animationDelay: `${delay}s` }}>
@@ -30,9 +33,9 @@ const PlayerCard: React.FC<PlayerCardProps> = ({img, name, level, petAmount, que
                                 <p className='flex flex-[0.5] text-white px-2'>{petAmount}/90</p>
                             </div>
                             <div className='flex flex-1 flex-row w-full p-1 gap-2'>
-                                <Image src={img} alt="Frogman" width={20} height={1} className='flex flex-1 justify-center items-center border-2 border-black rounded-full'></Image>
-                                <Image src={img} alt="Frogman" width={20} height={1} className='flex flex-1 justify-center items-center border-2 border-black rounded-full'></Image>
-                                <Image src={img} alt="Frogman" width={20} height={1} className='flex flex-1 justify-center items-center border-2 border-black rounded-full'></Image>
+                                <Image src={img1} alt="Frogman" width={20} height={1} className='flex flex-1 justify-center items-center border-2 border-black rounded-full'></Image>
+                                <Image src={img2} alt="Frogman" width={20} height={1} className='flex flex-1 justify-center items-center border-2 border-black rounded-full'></Image>
+                                <Image src={img3} alt="Frogman" width={20} height={1} className='flex flex-1 justify-center items-center border-2 border-black rounded-full'></Image>
                             </div>
                         </div>
                         <p className='text-white text-2xl px-2'>Quests: {questAmount}</p>

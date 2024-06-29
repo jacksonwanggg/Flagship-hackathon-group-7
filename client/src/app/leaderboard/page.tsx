@@ -4,14 +4,13 @@ import PlayerCard from '@/components/PlayerCard';// Assuming the correct path is
 
 export default function Leaderboard() {
     const players = [
-        { img: "/assets/frogchad.jpg", name: 'Kj', level: 500, petAmount: 80, questAmount: 120 },
-        { img: "/assets/frogmanner.jpg", name: 'Jerry', level: 200, petAmount: 42, questAmount: 23 },
-        { img: "/assets/frogman.jpg", name: 'Jackson', level: 10, petAmount: 23, questAmount: 10 },
-        { img: "/assets/chickboy.jpg", name: 'Eric', level: 2, petAmount: 3, questAmount: 3 },
-        { img: "/assets/kitty.png", name: 'Andrew', level: 1, petAmount: 2, questAmount: 1 },
-        { img: "/assets/kitty.png", name: 'Andrew', level: 1, petAmount: 2, questAmount: 1 },
-        { img: "/assets/kitty.png", name: 'Andrew', level: 1, petAmount: 2, questAmount: 1 },
-        { img: "/assets/kitty.png", name: 'Andrew', level: 1, petAmount: 2, questAmount: 1 },
+        { img: "/assets/kj.jpg", img1: "/assets/sheepchad.png", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'Kj', level: 500, petAmount: 80, questAmount: 120 },
+        { img: "/assets/andrew.jpg", img1: "/assets/frogchad.jpg", img2: "/assets/giraffeman.png", img3: "/assets/sheeper.png", name: 'Andrew', level: 230, petAmount: 42, questAmount: 80 },
+        { img: "/assets/jackson.jpg", img1: "/assets/sharky.png", img2: "/assets/lizardman.png", img3: "/assets/kitty.png", name: 'Jackson', level: 150, petAmount: 36, questAmount: 75 },
+        { img: "/assets/eric.jpg", img1: "/assets/frogman.jpg", img2: "/assets/waterlizard.png", img3: "/assets/giraffeboy.png", name: 'Eric', level: 99, petAmount: 28, questAmount: 35 },
+        { img: "/assets/jerry.jpg", img1: "/assets/chickboy.jpg", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'Jerry', level: 1, petAmount: 3, questAmount: 1 },
+        { img: "/assets/frogchad.jpg", img1: "/assets/sheepchad.png", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'Poopman', level: 500, petAmount: 80, questAmount: 120 },
+        { img: "/assets/frogchad.jpg", img1: "/assets/sheepchad.png", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'Kj', level: 500, petAmount: 80, questAmount: 120 },
     ];
     
     return (
@@ -29,6 +28,9 @@ export default function Leaderboard() {
                     <PlayerCard
                     key={index}
                     img={player.img}
+                    img1={player.img1}
+                    img2={player.img2}
+                    img3={player.img3}
                     name={player.name}
                     level={player.level}
                     petAmount={player.petAmount}
