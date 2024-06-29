@@ -9,7 +9,7 @@ export default function Profile() {
     const router = useRouter();
     return (
         <div className='w-screen h-screen bg-[#ffa844] shadow-lg z-0'>
-            <div className="relative w-full h-[32%] p-8">
+            <div className="relative w-full h-[35%] p-8">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute w-[400px] h-[400px] bg-[#ffb649] rounded-full top-[-140px] left-[-90px]"></div>
                     <div className="absolute w-[300px] h-[300px] bg-[#ffce49] rounded-full top-[-100px] left-[-100px]"></div>
@@ -21,9 +21,14 @@ export default function Profile() {
                     <Image src="/assets/eric.jpg" alt="Frogman" width={150} height={100} className='mb-2 flex relative justify-center items-center border-2 animate-fadeIn border-white rounded-full'></Image>
                     <p className='text-white font-bold flex justify-center animate-fadeIn text-4xl'>Eric Xu</p>
                     <p className='text-white text-2xl animate-fadeIn'>LVL 99</p>
+                    <progress
+                        className="progress progress-accent m-2 w-full max-w-xs"
+                        value={70}
+                        max="100"
+                    ></progress>
                 </div>
             </div>
-            <div className='w-full rounded-t-[30px] border-2 border-white bg-white h-[68%] relative z-0'>
+            <div className='w-full rounded-t-[30px] border-2 border-white bg-white h-fit relative z-0'>
                 <div className="flex h-full flex-col">
                     <div className="flex items-center w-full pt-5 text-black">
                         <div className="flex-grow border-t border-black ml-3"></div>
