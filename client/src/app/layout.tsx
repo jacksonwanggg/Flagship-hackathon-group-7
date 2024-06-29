@@ -44,7 +44,7 @@ export default function RootLayout({
 					<Toaster
 						containerStyle={{
 							right: 0,
-              left: 10,
+							left: 10,
 							top: 1000,
 						}}
 					/>
