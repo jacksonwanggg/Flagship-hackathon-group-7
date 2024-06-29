@@ -30,7 +30,7 @@ export default function Leaderboard() {
     ];
     
     return (
-        <div className="w-screen h-screen bg-gradient-to-t from-blue-800 to-green-300">
+        <div className="w-screen h-screen bg-gradient-to-t from-green-700 to-green-400">
             <div className='py-8 pb-4 border-b-1'>
                 <div className='flex flex-col justify-center gap-4'>
                     <PersonAddIcon className='flex justify-end ml-[89%] absolute text-white scale-[1.5]' />
@@ -66,7 +66,7 @@ export default function Leaderboard() {
                                 level={player.level}
                                 petAmount={player.petAmount}
                                 questAmount={player.questAmount}
-                                delay={`${index * 0.2}s`}
+                                delay={`${index * 0.2}`}
                             />
                         ))}
                     </div>
@@ -84,7 +84,7 @@ export default function Leaderboard() {
                                 level={player.level}
                                 petAmount={player.petAmount}
                                 questAmount={player.questAmount}
-                                delay={`${index * 0.2}s`}
+                                delay={`${index * 0.2}`}
                             />
                         ))}
                     </div>
