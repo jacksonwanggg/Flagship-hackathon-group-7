@@ -197,8 +197,7 @@ const PetsCarousel: React.FC = () => {
   }
 
   return (
-    <div className="carousel-container p-4 rounded-lg">
-      {pets.length > 1 ? (
+    <div className="w-full rounded-[30px]">
         <Carousel
           responsive={responsive}
           swipeable
@@ -215,18 +214,18 @@ const PetsCarousel: React.FC = () => {
           itemClass="carousel-item"
         >
           {pets.map((pet, index) => (
-            <div key={index} className="carousel-item-content rounded-lg mb-6">
-              <div className={`image-container mb-4 ${isShrinking && currentPetIndex === index ? 'scale-0' : 'scale-100'}`}>
+            <div key={index} className={`carousel-item-content rounded-[30px] m-6 border-4 border-blue-500 bg-gradient-to-b from-blue-500 to-purple-600 transition-transform duration-500 ${isShrinking && currentPetIndex === index ? 'scale-0' : 'scale-100'}`}>
+              <div className="image-container m-6">
                 <Image
                   src={`/assets/${getPetEvolution(pet).imagePath}`}
-                  className="transition-transform duration-500 w-full rounded-xl aspect-square object-cover border-4 border-gray-300"
+                  className="w-full rounded-xl aspect-square object-cover border-4 border-gray-300"
                   alt={getPetEvolution(pet).petName}
                   width={1000}
                   height={1500}
                 />
               </div>
               <h2 className="text-5xl font-bold text-center mt-4">{getPetEvolution(pet).petName}</h2>
-              <div className="flex justify-center items-center">
+              <div className="flex justify-center items-center mb-4">
                 <button className='text-center' onClick={() => setChat(!chat)}>
                   {chat ? `Close chat with ${getPetEvolution(pet).petName}` : `Chat with ${getPetEvolution(pet).petName}`}
                 </button>
@@ -240,38 +239,11 @@ const PetsCarousel: React.FC = () => {
                   FEED
                 </button>
               </div>
-              <progress className="progress mx-auto progress-accent w-full max-w-xs" value={pet.experience} max="100"></progress>
-              <h1 className="text-5xl font-bold text-center mb-4 experience-header">{pet.experience}/100 EXP</h1>
+              <progress className="progress m-6 progress-accent w-full max-w-xs" value={pet.experience} max="100"></progress>
+              <h1 className="text-5xl font-bold text-center mb-4">{pet.experience}/100 EXP</h1>
             </div>
           ))}
         </Carousel>
-      ) : (
-        pets.map((pet, index) => (
-          <div key={index} className="carousel-item-content rounded-lg mx-auto mb-6">
-            <div className={`image-container mb-4 ${isShrinking && currentPetIndex === index ? 'scale-0' : 'scale-100'}`}>
-              <Image
-                src={`/assets/${getPetEvolution(pet).imagePath}`}
-                className="transition-transform duration-500 w-full rounded-xl aspect-square object-cover border-4 border-gray-300"
-                alt={getPetEvolution(pet).petName}
-                width={1000}
-                height={1500}
-              />
-            </div>
-            <h2 className="text-5xl font-bold text-center mt-4">{getPetEvolution(pet).petName}</h2>
-            <div className="flex justify-center mt-4">
-              <button
-                type="button"
-                onClick={() => handleFeedClick(pet, index)}
-                className="text-white text-2xl bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg w-64 py-2.5 text-center mb-2"
-              >
-                FEED
-              </button>
-            </div>
-            <progress className="progress mx-auto progress-accent w-full max-w-xs" value={pet.experience} max="100"></progress>
-            <h1 className="text-5xl font-bold text-center mb-4 experience-header">{pet.experience}/100 EXP</h1>
-          </div>
-        ))
-      )}
       {!chat ? (
       <IoChatbubbleEllipsesOutline
         className='chat-btn'

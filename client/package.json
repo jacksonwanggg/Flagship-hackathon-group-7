@@ -21,16 +21,11 @@
     "openai": "^4.52.2",
     "react": "^18",
     "react-dom": "^18",
-<<<<<<< HEAD
     "typescript": "^5.5.2",
     "react-icons": "^5.2.1",
-    "react-router-dom": "^6.24.0"
-=======
-    "react-icons": "^5.2.1",
-    "react-multi-carousel": "^2.8.5",
     "react-router-dom": "^6.24.0",
+    "react-multi-carousel": "^2.8.5",
     "react-webcam": "^7.2.0"
->>>>>>> 7d0f7c400ee4581f75a1618a3325e515157f6fb5
   },
   "devDependencies": {
     "@types/node": "^20",
