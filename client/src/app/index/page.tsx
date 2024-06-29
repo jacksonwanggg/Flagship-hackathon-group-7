@@ -6,7 +6,6 @@ import Countdown from "@/components/Countdown";
 import Dashboard from "@/components/Dashboard";
 import posts from "../../../public/assets/posts";
 import { Post } from "@/lib/types";
-import { WiNightAltCloudyGusts } from "react-icons/wi";
 
 // const fetchPosts = async (): Promise<Post[]> => {
 // 	const res = await fetch("/assets/posts.json");
@@ -19,8 +18,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <div className="h-[932px] mx-auto flex flex-col justify-start">
-        <Countdown seconds={5} />
+      <div className="h-[932px] mx-auto justify-start bg-rose-600">
         <Dashboard posts={userPosts} />
         <PostList posts={userPosts} />
         {/* </div> */}
