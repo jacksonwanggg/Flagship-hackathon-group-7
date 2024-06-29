@@ -16,13 +16,10 @@ const PostCard: React.FC<Post> = ({ userName, caption }) => {
         <p>{caption}</p>
       </div>
       <figure>
-        <Image
-          // replace image with embedded video
-          src="../../../public/vercel.svg"
-          alt="Shoes"
-          width={400}
-          height={400}
-        />
+        <video width="600" autoPlay>
+          <source src="/assets/test.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
       </figure>
     </div>
   );
