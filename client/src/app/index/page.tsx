@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import PostList from "@/components/PostCardList";
 import Countdown from "@/components/Countdown";
 import Dashboard from "@/components/Dashboard";
-import posts from "../../../public/assets/posts";
+import posts from "../../lib/posts";
+import postsWithUrls from "../../utils/processPosts";
 import { Post } from "@/lib/types";
 
 // const fetchPosts = async (): Promise<Post[]> => {
@@ -14,17 +15,50 @@ import { Post } from "@/lib/types";
 // };
 
 const Home: React.FC = () => {
-  const [userPosts, setUserPosts] = useState<Post[]>(posts);
+	const [latestFile, setLatestFile] = useState("");
+	const [postsWithUrls, setPostsWithUrls] = useState([]);
 
-  return (
-    <>
-      <div className="h-[932px] mx-auto justify-start bg-rose-600">
-        <Dashboard posts={userPosts} />
-        <PostList posts={userPosts} />
-        {/* </div> */}
-      </div>
-    </>
-  );
+	useEffect(() => {
+		const ws = new WebSocket("ws://localhost:8080");
+
+		ws.onmessage = (event) => {
+			try {
+				const latestFileUrl = JSON.parse(event.data);
+				if (typeof latestFileUrl === "string") {
+					setLatestFile(latestFileUrl);
+				} else {
+					console.error(
+						"Expected latestFileUrl to be a string:",
+						latestFileUrl
+					);
+				}
+			} catch (error) {
+				console.error("Error parsing message data:", error);
+			}
+		};
+
+		return () => {
+			ws.close();
+		};
+	}, []);
+
+	useEffect(() => {
+		const combined: any = posts.map((post, index) => {
+			const url = index === 0 ? latestFile : "";
+			return { ...post, url };
+		});
+		setPostsWithUrls(combined); 
+	}, [latestFile]);
+
+	return (
+		<>
+			<div className="h-[932px] mx-auto justify-start bg-rose-600">
+				<Dashboard post={latestFile} />
+				<PostList posts={postsWithUrls} />
+				{/* </div> */}
+			</div>
+		</>
+	);
 };
 
 export default Home;
