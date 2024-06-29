@@ -59,7 +59,7 @@ const PostCard: React.FC<PostCardProps> = ({
         </video>
       </figure>
       <div>
-        <IconButton sx={{ pt: 1 }} onClick={handleLike}>
+        <IconButton sx={{ pt: 1 }}>
           <FavoriteRoundedIcon sx={{ color: "white" }}></FavoriteRoundedIcon>
         </IconButton>
         <IconButton sx={{ pt: 1.25 }}>
