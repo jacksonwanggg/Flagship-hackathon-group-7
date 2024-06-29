@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Image from 'next/image';
-import CustomArrow from './CustomArrow';  // Adjust the import path if necessary
 import '../styles/pets.module.css';
 
 export interface Pet {
@@ -104,6 +103,7 @@ function goingToEvolutionise(pet: Pet): boolean {
 
 const PetsCarousel: React.FC = () => {
   const [pets, setPets] = useState<Pet[]>(initialPets);
+  const [animationClass, setAnimationClass] = useState<string>('');
   const [isShrinking, setIsShrinking] = useState(false);
   const [currentPetIndex, setCurrentPetIndex] = useState<number | null>(null);
 
@@ -127,7 +127,7 @@ const PetsCarousel: React.FC = () => {
   };
 
   return (
-    <div className="carousel-container p-4 rounded-lg bg-white">
+    <div className="carousel-container p-4 rounded-lg">
       {pets.length > 1 ? (
         <Carousel
           responsive={responsive}
@@ -143,8 +143,6 @@ const PetsCarousel: React.FC = () => {
           containerClass="carousel-wrapper"
           dotListClass="custom-dot-list-style"
           itemClass="carousel-item"
-          customLeftArrow={<CustomArrow onClick={() => {}} label="◄" />}
-          customRightArrow={<CustomArrow onClick={() => {}} label="►" />}
         >
           {pets.map((pet, index) => (
             <div key={index} className="carousel-item-content rounded-lg mb-6">
@@ -175,7 +173,7 @@ const PetsCarousel: React.FC = () => {
       ) : (
         pets.map((pet, index) => (
           <div key={index} className="carousel-item-content rounded-lg mx-auto mb-6">
-            <div className={`image-container mb-4`}>
+            <div className={`image-container ${animationClass} mb-4`}>
               <Image
                 src={'/assets/' + getPetEvolution(pet).imagePath}
                 className={`transition-transform duration-500 ${isShrinking && currentPetIndex === index ? 'scale-0' : 'scale-100'} w-full rounded-xl aspect-square object-cover border-4 border-gray-300`}
@@ -184,7 +182,7 @@ const PetsCarousel: React.FC = () => {
                 height={1500}
               />
             </div>
-            <h2 className="text-5xl font-bold text-center text-black mt-4">{getPetEvolution(pet).petName}</h2>
+            <h2 className="text-5xl font-bold text-center mt-4">{getPetEvolution(pet).petName}</h2>
             <div className="flex justify-center mt-4">
               <button
                 type="button"
