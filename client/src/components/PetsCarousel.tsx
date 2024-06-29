@@ -9,6 +9,8 @@ const sound = new Audio('/eating-sound-effect-36186.mp3');
 const levelup = new Audio('/cute-level-up-2-189851.mp3');
 const error = new Audio('/error.mp3');
 
+const maxExp = 80;
+
 import {
   MainContainer,
   ChatContainer,
@@ -46,12 +48,12 @@ export const initialPets: Pet[] = [
       {
         petName: "Frapple",
         imagePath: "frogmanner.jpg",
-        experience: 50,
+        experience: maxExp * 0.5,
       },
       {
         petName: "Frapchad",
         imagePath: "frogchad.jpg",
-        experience: 100,
+        experience: maxExp,
       },
     ],
     experience: 0,
@@ -66,12 +68,12 @@ export const initialPets: Pet[] = [
       {
         petName: "Girfa",
         imagePath: "giraffechad.png",
-        experience: 50,
+        experience: maxExp * 0.5,
       },
       {
         petName: "Girfchad",
         imagePath: "giraffeman.png",
-        experience: 100,
+        experience: maxExp,
       },
     ],
     experience: 0,
@@ -86,12 +88,12 @@ export const initialPets: Pet[] = [
       {
         petName: "Rammington",
         imagePath: "sheeper.png",
-        experience: 50,
+        experience: maxExp * 0.5,
       },
       {
         petName: "Ramchad",
         imagePath: "sheepchad.png",
-        experience: 100,
+        experience: maxExp,
       },
     ],
     experience: 0,
@@ -152,7 +154,7 @@ const PetsCarousel: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
 
   const getFeedButtonText = (pet: Pet): String => {
-    if (pet.experience === 100) {
+    if (pet.experience === maxExp) {
       return "MAX LEVEL";
     }
     return "FEED";
@@ -170,14 +172,14 @@ const PetsCarousel: React.FC = () => {
     }
 
     setCurrentPetIndex(index);
-    if (pet.experience !== 100) {
+    if (pet.experience !== maxExp) {
       setIsAnimating(true);
     }
     if (goingToEvolutionise(pet)) {
       levelup.play();
       setIsShrinking(true);
     }
-    if (pet.experience >= 100) {
+    if (pet.experience >= maxExp) {
       setIsShrinking(false);
       return;
     }
@@ -316,11 +318,11 @@ const PetsCarousel: React.FC = () => {
               <progress
                 className="progress progress-accent w-full max-w-xs"
                 value={pet.experience}
-                max="100"
+                max={maxExp}
               ></progress>
             </div>
             <h1 className="text-3xl text-white font-bold text-center mb-4">
-              {pet.experience}/100 EXP
+              {pet.experience}/{maxExp} EXP
             </h1>
           </div>
         ))}

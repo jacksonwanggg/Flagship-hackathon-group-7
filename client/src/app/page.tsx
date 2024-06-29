@@ -3,7 +3,9 @@ import React from 'react';
 import Landing from '../pages/Landing';
 
 const Login = () => {
-  return <Landing />;
+  return <>
+    <Landing />
+  </>;
 };
 
 export default Login;
