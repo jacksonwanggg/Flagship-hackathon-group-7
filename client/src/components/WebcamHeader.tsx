@@ -33,22 +33,4 @@ export default function WebcamHeader() {
 			</div>
 		</div>
 	);
-	// return (
-	// 	<div className="webcam-header">
-	// 		<motion.h2
-	// 			className="flex justify-center items-center text-center text-3xl capitalize font-medium mb-8 drop-shadow-md"
-	// 			initial={{ opacity: 0 }}
-	// 			animate={{ opacity: 1 }}
-	// 			transition={{ duration: 0.2 }}>
-	// 			YOUR ACTIVITY IS
-	// 		</motion.h2>
-	// 		<motion.h2
-	// 			className="flex justify-center items-center text-center text-3xl capitalize font-medium mb-8 drop-shadow-md"
-	// 			initial={{ opacity: 0 }}
-	// 			animate={{ opacity: 1 }}
-	// 			transition={{ duration: 0.5 }}>
-	// 			PUSH-UPS
-	// 		</motion.h2>
-	// 	</div>
-	// );
 }
