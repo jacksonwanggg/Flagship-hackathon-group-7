@@ -34,21 +34,21 @@ export default function Profile() {
                         <div className='flex flex-row w-full h-full justify-center gap-4'>
                             <div className='flex flex-col items-center'>
                                 <Image  src="/assets/food.png" alt="food" width={60} height={50}></Image>
-                                <p>32</p>
+                                <p>320</p>
                             </div>
                             <div className='flex flex-col items-center'>
                                 <Image  src="/assets/gemston.png" alt="gem" width={60} height={50}></Image>
-                                <p>200</p>
+                                <p>20</p>
                             </div>
                             <div className='flex flex-col items-center'>
                                 <Image  src="/assets/gold.png" alt="gold" width={60} height={50}></Image>
-                                <p>123</p>
+                                <p>200</p>
                             </div>
                         </div>
                     </div>
                     <div className="flex items-center w-full pt-5 text-black">
                         <div className="flex-grow border-t border-black ml-3"></div>
-                            <span className="flex-shrink mx-4 font-bold text-2xl">Pets</span>
+                            <span className="flex-shrink mx-4 font-bold text-2xl">FitMons</span>
                         <div className="flex-grow border-t border-black mr-3"></div>
                     </div>
                     <div className='flex flex-col gap-5 py-5'>
