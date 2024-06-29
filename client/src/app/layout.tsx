@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import "./globals.css";
 import { Sora } from "next/font/google";
@@ -19,8 +19,8 @@ type PageContextType = {
 };
 
 export const PageContext = createContext<PageContextType>({
-	activePage: "home",
-	setActivePage: () => {},
+	activePage: "",
+	setActivePage: (string) => {},
 });
 
 export default function RootLayout({
@@ -28,8 +28,16 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const [activePage, setActivePage] = useState("Home");
+	const [activePage, setActivePage] = useState("");
 	const pathname = usePathname();
+
+	useEffect(() => {
+		// Extract the page name from the pathname
+		if (!pathname) return;
+		const page = pathname === "/" ? "Home" : pathname.slice(1);
+		setActivePage(page.charAt(0).toUpperCase() + page.slice(1));
+		console.log(activePage);
+	}, [pathname]);
 
 	return (
 		<html lang="en">

@@ -3,7 +3,7 @@ export interface Post {
 	caption: string;
 }
 
-export interface RouteData {
+export interface RouteDataType {
 	name: string;
 	route: string;
 }

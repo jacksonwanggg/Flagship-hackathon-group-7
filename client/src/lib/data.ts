@@ -7,26 +7,18 @@ export const navBarPageRoutes = [
 	{
 		name: "Home",
 		route: "/",
-		// logo: IoHome,
-		// iconClassName: "InconType",
 	},
 	{
 		name: "Pets",
 		route: "/pets",
-		// logo: MdOutlinePets,
-		// iconClassName: "InconType",
 	},
 	{
 		name: "Leaderboard",
 		route: "/leaderboard",
-		// logo: MdLeaderboard,
-		// iconClassName: "InconType",
 	},
 	{
 		name: "Memories",
 		route: "/memories",
-		// logo: Collections,
-		// iconClassName: "InconType",
 	},
 	// {
 	// 	name: "Webcam",
