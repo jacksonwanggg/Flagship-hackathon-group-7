@@ -1,6 +1,8 @@
 // Countdown.tsx
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { PageContext } from "../app/layout";
+import { useContext } from "react";
 
 interface CountdownProps {
 	seconds: number;
@@ -13,6 +15,7 @@ const Countdown: React.FC<CountdownProps> = ({ seconds }) => {
 	const [minutes, setMinutes] = useState(0);
 	const [remainingSeconds, setRemainingSeconds] = useState(0);
 	const [timeHasReached, setTimeHasReached] = useState(false);
+	const { activePage, setActivePage } = useContext(PageContext);
 
 	const router = useRouter();
 
@@ -61,6 +64,11 @@ const Countdown: React.FC<CountdownProps> = ({ seconds }) => {
 		}
 	}
 
+	const handleWebcamClick = () => {
+		router.push("/webcam");
+		setActivePage("Webcam");
+	};
+
 	return (
 		<div>
 			<div className="grid grid-flow-col gap-5 text-center auto-cols-max justify-center">
@@ -105,7 +113,7 @@ const Countdown: React.FC<CountdownProps> = ({ seconds }) => {
 				{timeHasReached ? (
 					<button
 						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-						onClick={() => router.push("/webcam")}>
+						onClick={handleWebcamClick}>
 						TIME TO MOVE AROUND
 					</button>
 				) : (

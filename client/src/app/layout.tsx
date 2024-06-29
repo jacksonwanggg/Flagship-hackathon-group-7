@@ -9,36 +9,38 @@ import Navbar from "@/components/Navbar";
 const inter = Sora({ subsets: ["latin"] });
 
 const metadata = {
-  title: "FitPets",
-  description: "Really Fit Pets",
+	title: "FitPets",
+	description: "Really Fit Pets",
 };
 
 type PageContextType = {
-  activePage: string;
-  setActivePage: React.Dispatch<React.SetStateAction<string>>;
+	activePage: string;
+	setActivePage: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const PageContext = createContext<PageContextType>({
-  activePage: "home",
-  setActivePage: () => {},
+	activePage: "home",
+	setActivePage: () => {},
 });
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  const [activePage, setActivePage] = useState("home");
-  const pathname = usePathname();
+	const [activePage, setActivePage] = useState("Home");
+	const pathname = usePathname();
 
-  return (
-    <html lang="en">
-      <body className={`app-container ${inter.className}`}>
-        <PageContext.Provider value={{ activePage, setActivePage }}>
-          <div>{children}</div>
-          {pathname !== "/landing" && pathname !== "/login" && pathname !== "/register" && <Navbar />}
-        </PageContext.Provider>
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body className={`app-container ${inter.className}`}>
+				<PageContext.Provider value={{ activePage, setActivePage }}>
+					<div>{children}</div>
+					{pathname !== "/landing" &&
+						pathname !== "/login" &&
+						pathname !== "/register" && <Navbar />}
+				</PageContext.Provider>
+			</body>
+		</html>
+	);
 }

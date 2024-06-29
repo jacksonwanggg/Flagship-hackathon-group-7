@@ -1,23 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 import TypeWriter from "@/components/Typewriter";
+import { exercises, ExerciseNameType } from "@/lib/data";
 // import CursorBlinker from "@/components/CursorBlinker";
 
 export default function WebcamHeader() {
-	const baseText = "Dear Hiring Manager, " as string;
-	const count = useMotionValue(0);
-	const rounded = useTransform(count, (latest) => Math.round(latest));
-	const displayText = useTransform(rounded, (latest) =>
-		baseText.slice(0, latest)
-	);
-
+	// select a random exercise
+	const [exercise, setExercise] = useState("12345678123451231234123124213");
+	const [exerciseDuration, setExerciseDuration] = useState(30);
 	useEffect(() => {
-		const controls = animate(count, baseText.length, {
-			type: "tween",
-			duration: 1,
-			ease: "easeInOut",
-		});
-		return controls.stop;
+		const randomExercise =
+			exercises[Math.floor(Math.random() * exercises.length)];
+		setExercise(randomExercise.name);
+		setExerciseDuration(randomExercise.duration);
 	}, []);
 
 	return (
@@ -28,11 +23,18 @@ export default function WebcamHeader() {
 				initial={{ y: -100, opacity: 0 }}
 				animate={{ y: 0, opacity: 0.9 }}
 				transition={{ duration: 0.5, ease: "easeOut" }}>
-				Your actity is...
+				Your activity is...
 			</motion.div>
 			<div className="mt-10 mx-auto scroll-m-20 pb-2 text-5xl font-semibold tracking-tight first:mt-0">
-				<TypeWriter fontSize="big">PUSHUPS</TypeWriter>
+				<TypeWriter fontSize="big">{exercise.toUpperCase()}</TypeWriter>
 			</div>
+			<motion.div
+				className="text-lg justify-center flex"
+				initial={{ y: 0, opacity: 0 }}
+				animate={{ y: 0, opacity: 1 }}
+				transition={{ duration: 5, ease: "easeIn" }}>
+				{`for ${exerciseDuration.toString()} seconds`}
+			</motion.div>
 		</div>
 	);
 }
