@@ -5,6 +5,7 @@ import SendIcon from "@mui/icons-material/Send";
 import { IconButton } from "@mui/material";
 import { exercises, ExerciseNameType } from "@/lib/data";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Recording: React.FC = () => {
 	const webcamRef = useRef<Webcam>(null);
@@ -85,6 +86,7 @@ const Recording: React.FC = () => {
 				})
 				.catch((error) => {
 					console.error("Error uploading file:", error);
+					toast.success("File Uploaded!");
 				});
 
 			setRecordedChunks([]);
