@@ -4,6 +4,8 @@ import React from 'react';
 import PlayerCard from '@/components/PlayerCard';// Assuming the correct path is '../components/PlayerCard/PlayerCard'
 import { useState } from 'react';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import PersonIcon from '@mui/icons-material/Person';
+import { useRouter } from 'next/navigation';
 
 
 export default function Leaderboard() {
@@ -28,12 +30,15 @@ export default function Leaderboard() {
         { img: "/assets/fortnite.png", img1: "/assets/sheepchad.png", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'leGamer', level: 500, petAmount: 80, questAmount: 120 },
         { img: "/assets/frogchad.jpg", img1: "/assets/sheepchad.png", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'Kj', level: 500, petAmount: 80, questAmount: 120 },
     ];
-    
+
+    const router = useRouter();
+
     return (
         <div className="w-screen h-screen bg-gradient-to-t from-green-700 to-green-400">
             <div className='py-8 pb-4 border-b-1'>
                 <div className='flex flex-col justify-center gap-4 '>
-                    <PersonAddIcon className='flex justify-end ml-[89%] absolute text-white scale-[1.5]' />
+                    <PersonIcon className='flex justify-start ml-[89%] absolute text-white scale-[1.5]' onClick={() => { router.push('/profile'); }} />
+                    <PersonAddIcon className='flex justify-end ml-[6%] absolute text-white scale-[1.5]' />
                     <p className='text-4xl font-bold text-white flex justify-center'>Leaderboard </p>
                 </div>
                 <div className='flex flex-row w-full justify-center gap-4'>
