@@ -7,6 +7,7 @@ import Dashboard from "@/components/Dashboard";
 interface Post {
   userName: string;
   caption: string;
+  videoURL: string;
 }
 
 const fetchPosts = async (): Promise<Post[]> => {
@@ -31,15 +32,9 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <div className="container mx-auto p-4">
-        {dataLoaded && (
-          <div className="mb-4">
-            <Dashboard /> {/* Render Dashboard only after data is loaded */}
-          </div>
-        )}
+      <div className="container mx-auto">
+        <Dashboard />
         <div className="mt-96">
-          {" "}
-          {/* Add margin-top to push PostList below the visible area */}
           <PostList posts={posts} />
         </div>
       </div>

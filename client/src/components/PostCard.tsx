@@ -6,11 +6,12 @@ import { Position } from "postcss";
 interface Post {
   userName: string;
   caption: string;
+  videoURL: string;
 }
 
 const PostCard: React.FC<Post> = ({ userName, caption }) => {
   return (
-    <div className="card bg-base-100 w-96 shadow-xl">
+    <div className="card bg-base-100 w-96 shadow-xl -z-1">
       <div className="card-body">
         <h2 className="card-title">{userName}</h2>
         <p>{caption}</p>
