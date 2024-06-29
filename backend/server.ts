@@ -1,7 +1,3 @@
-// import path from "path";
-// import express from "express";
-// import multer from "multer";
-// import fs from "fs";
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
