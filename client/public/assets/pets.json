@@ -1,4 +1,12 @@
 [
-  {"petName": "Frog", "imagePath": "frog.jpeg"},
-  {"petName": "Dog", "imagePath": "dog.jpeg"}
+  {
+    "petName": "Kitty", 
+    "imagePath": "kitty.png",
+    "experience": 39
+  },
+  {
+    "petName": "Chickboy", 
+    "imagePath": "chickboy.jpg",
+    "experience": 50
+  }
 ]

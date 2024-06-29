@@ -1,9 +1,9 @@
 // src/pages/login.tsx
 import React from 'react';
-import LoginPage from '../../pages/loginpage';
+import Landing from '../../pages/Landing';
 
 const Login = () => {
-  return <LoginPage />;
+  return <Landing />;
 };
 
 export default Login;
