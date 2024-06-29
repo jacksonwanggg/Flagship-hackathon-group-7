@@ -32,7 +32,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({img, img1, img2, img3, name, lev
                     <div className='flex flex-col mr-5 bg-gradient-to-r from-green-600 to-green-400 rounded-xl'>
                         <div className='flex flex-row py-2 w-full gap-2'>
                             <div className='flex flex-col flex-0.5'>
-                                <p className='flex flex-[0.5] text-xl text-white px-2'>Pets:</p>
+                                <p className='flex flex-[0.5] text-xl text-white px-2'>Mons:</p>
                                 <p className='flex flex-[0.5] text-white text-l px-2'>{petAmount}/90</p>
                             </div>
                             <div className='flex flex-1 flex-row w-full p-1 gap-2'>
