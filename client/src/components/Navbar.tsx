@@ -48,16 +48,22 @@ export default function Navbar() {
 			setToGradientColor("black-400");
 		} else if (name === "Leaderboard") {
 			setActivePage("Leaderboard");
-			setFromGradientColor("green-700");
-			setToGradientColor("green-400");
+			// setFromGradientColor("green-700");
+			// setToGradientColor("green-400");
+			setFromGradientColor("black-400");
+			setToGradientColor("black-400");
 		} else if (name === "Pets") {
 			setActivePage("Pets");
-			setFromGradientColor("purple-600");
-			setToGradientColor("blue-500");
+			// setFromGradientColor("purple-600");
+			// setToGradientColor("blue-500");
+			setFromGradientColor("black-400");
+			setToGradientColor("black-400");
 		} else if (name === "Memories") {
 			setActivePage("Memories");
-			setFromGradientColor("purple-600");
-			setToGradientColor("blue-500");
+			// setFromGradientColor("purple-600");
+			// setToGradientColor("blue-500");
+			setFromGradientColor("black-400");
+			setToGradientColor("black-400");
 			// setFromGradientColor("purple-500");
 			// setToGradientColor("purple-400");
 		}
