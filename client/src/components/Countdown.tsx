@@ -1,6 +1,7 @@
 // Countdown.js
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 interface CountdownProps {
 	seconds: number;
@@ -8,11 +9,13 @@ interface CountdownProps {
 
 const Countdown = ({ seconds }: CountdownProps) => {
 	const [timeLeft, setTimeLeft] = useState(seconds);
-	const navigate = useNavigate();
+	const router = useRouter();
+
+	// const navigate = useNavigate();
 
 	useEffect(() => {
 		if (timeLeft === 0) {
-			navigate("/webcam");
+			router.push("/webcam");
 		}
 
 		const timer = setInterval(() => {
@@ -20,11 +23,11 @@ const Countdown = ({ seconds }: CountdownProps) => {
 		}, 1000);
 
 		return () => clearInterval(timer);
-	}, [timeLeft, navigate]);
+	}, [timeLeft, router]);
 
 	return (
-		<div>
-			<h1>Countdown: {timeLeft}s</h1>
+		<div className="flex flex-col z-1000">
+			<p>Countdown: {timeLeft}s</p>
 		</div>
 	);
 };
