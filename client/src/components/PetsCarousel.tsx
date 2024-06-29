@@ -1,15 +1,9 @@
-"use client";
-
-import React, { useState } from "react";
+'use client';
+import { useState, useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Image from "next/image";
-import {
-  IoChatbubbleEllipsesOutline,
-  IoChatbubbleEllipsesSharp,
-} from "react-icons/io5";
 import "../styles/pets.module.css";
-import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {
   MainContainer,
   ChatContainer,
@@ -18,6 +12,7 @@ import {
   MessageInput,
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
+import { IoChatbubbleEllipsesOutline, IoChatbubbleEllipsesSharp } from "react-icons/io5";
 
 const API_KEY = "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";
 
@@ -33,8 +28,9 @@ export interface PetEvolution {
 }
 
 const expIncrement = 5;
+const feedCost = 10; // cost of feeding a pet
 
-const initialPets: Pet[] = [
+export const initialPets: Pet[] = [
   {
     evolutions: [
       {
@@ -114,8 +110,10 @@ function goingToEvolutionise(pet: Pet): boolean {
 
 const PetsCarousel: React.FC = () => {
   const [pets, setPets] = useState<Pet[]>(initialPets);
+  const [currency, setCurrency] = useState<number>(200); // initial amount of currency
   const [isShrinking, setIsShrinking] = useState(false);
   const [currentPetIndex, setCurrentPetIndex] = useState<number | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [chat, setChat] = useState(false);
   const [messages, setMessages] = useState([
     {
@@ -128,9 +126,20 @@ const PetsCarousel: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
 
   const handleFeedClick = (pet: Pet, index: number) => {
+    if (currency < feedCost) {
+      alert("Not enough currency to feed the pet!");
+      return;
+    }
+
     setCurrentPetIndex(index);
+    if (pet.experience !== 100) {
+      setIsAnimating(true);
+    }
     if (goingToEvolutionise(pet)) {
       setIsShrinking(true);
+    }
+    if (pet.experience >= 100) {
+      return;
     }
     setTimeout(() => {
       setPets((prevPets) => {
@@ -142,7 +151,9 @@ const PetsCarousel: React.FC = () => {
         return updatedPets;
       });
       setIsShrinking(false);
+      setIsAnimating(false);
       setCurrentPetIndex(null);
+      setCurrency(currency - feedCost);
     }, 500);
   };
 
@@ -210,53 +221,70 @@ const PetsCarousel: React.FC = () => {
   }
 
   return (
-    <div className="w-full rounded-[30px]">
-        <Carousel
-          responsive={responsive}
-          swipeable
-          draggable
-          showDots
-          ssr
-          infinite
-          autoPlaySpeed={1000}
-          keyBoardControl
-          customTransition="transform 300ms ease-in-out"
-          transitionDuration={500}
-          containerClass="carousel-wrapper"
-          dotListClass="custom-dot-list-style"
-          itemClass="carousel-item"
-        >
-          {pets.map((pet, index) => (
-            <div key={index} className={`carousel-item-content rounded-[30px] m-6 border-4 border-blue-500 bg-gradient-to-b from-blue-500 to-purple-600 transition-transform duration-500 ${isShrinking && currentPetIndex === index ? 'scale-0' : 'scale-100'}`}>
-              <div className="image-container m-6">
-                <Image
-                  src={`/assets/${getPetEvolution(pet).imagePath}`}
-                  className="w-full rounded-xl aspect-square object-cover border-4 border-gray-300"
-                  alt={getPetEvolution(pet).petName}
-                  width={1000}
-                  height={1500}
-                />
-              </div>
-              <h2 className="text-5xl font-bold text-center mt-4">{getPetEvolution(pet).petName}</h2>
-              <div className="flex justify-center items-center mb-4">
-                <button className='text-center' onClick={() => setChat(!chat)}>
-                  {chat ? `Close chat with ${getPetEvolution(pet).petName}` : `Chat with ${getPetEvolution(pet).petName}`}
-                </button>
-              </div>
-              <div className="flex justify-center mt-4">
-                <button
-                  type="button"
-                  onClick={() => handleFeedClick(pet, index)}
-                  className="text-white text-2xl bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg w-64 py-2.5 text-center mb-2"
-                >
-                  FEED
-                </button>
-              </div>
-              <progress className="progress m-6 progress-accent w-full max-w-xs" value={pet.experience} max="100"></progress>
-              <h1 className="text-5xl font-bold text-center mb-4">{pet.experience}/100 EXP</h1>
+    <div className="w-full rounded-[30px] animate-slideUp">
+      <Carousel
+        responsive={responsive}
+        swipeable
+        draggable
+        showDots
+        ssr
+        infinite
+        autoPlaySpeed={1000}
+        keyBoardControl
+        customTransition="transform 300ms ease-in-out"
+        transitionDuration={500}
+        containerClass="carousel-wrapper"
+        dotListClass="custom-dot-list-style"
+        itemClass="carousel-item"
+      >
+        {pets.map((pet, index) => (
+          <div
+            key={index}
+            className={`shadow-2xl carousel-item-content rounded-[30px] m-6 bg-gradient-to-b to-blue-500 from-purple-600 transition-transform duration-500 ${
+              isShrinking && currentPetIndex === index ? "scale-0" : "scale-100"
+            }`}
+          >
+            <div className="image-container m-6">
+              <Image
+                src={`/assets/${getPetEvolution(pet).imagePath}`}
+                className="w-full rounded-xl aspect-square object-cover border-4 border-gray-300"
+                alt={getPetEvolution(pet).petName}
+                width={800}
+                height={800}
+              />
             </div>
-          ))}
-        </Carousel>
+            <h2 className="text-4xl font-bold text-center mt-4">
+              {getPetEvolution(pet).petName}
+            </h2>
+            <div className="flex justify-center items-center mb-4">
+              <button className="text-center" onClick={() => setChat(!chat)}>
+                {chat
+                  ? `Close chat with ${getPetEvolution(pet).petName}`
+                  : `Chat with ${getPetEvolution(pet).petName}`}
+              </button>
+            </div>
+            <div className="flex justify-center mt-4">
+            <button
+              type="button"
+              onClick={() => handleFeedClick(pet, index)}
+              className="text-white text-2xl bg-gradient-to-br from-purple-600 to-blue-800 hover:bg-gradient-to-bl  dark:focus:ring-blue-800 font-medium rounded-lg w-64 py-1 text-center mb-2 flex items-center justify-center transition-transform transform active:scale-95"
+            >
+              FEED
+            </button>
+            </div>
+            <div className="flex justify-center my-4">
+              <progress
+                className="progress progress-accent w-full max-w-xs"
+                value={pet.experience}
+                max="100"
+              ></progress>
+            </div>
+            <h1 className="text-3xl font-bold text-center mb-4">
+              {pet.experience}/100 EXP
+            </h1>
+          </div>
+        ))}
+      </Carousel>
       {!chat ? (
       <IoChatbubbleEllipsesOutline
         className='chat-btn'
@@ -332,6 +360,27 @@ const PetsCarousel: React.FC = () => {
         />
       </div>
     )}
+
+      <div className="flex justify-center items-center py-6">
+        <h2 className="text-4xl font-bold text-black">{currency}</h2>
+
+              <Image
+                src="/assets/food.png"
+                alt="food"
+                width={50}
+                height={50}
+                className=""
+              />
+              {isAnimating && (
+                  <Image
+                    src="/assets/food.png"
+                    alt="food"
+                    width={50}
+                    height={50}
+                    className="absolute z-50 animate-foodSlideUp delay-200"
+                  />
+              )}
+      </div>
     </div>
   );
 };
