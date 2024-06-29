@@ -22,6 +22,13 @@ const Memories: React.FC = () => {
     {
       month: "June 2024",
       memories: [
+        { date: "2024-06-18", imageUrl: "jerry.jpg" },
+        { date: "2024-06-19", imageUrl: "squat.jpg" },
+        { date: "2024-06-20", imageUrl: "plank.jpg" },
+        { date: "2024-06-21", imageUrl: "abs.jpg" },
+        { date: "2024-06-22", imageUrl: "oneleg.jpg" },
+        { date: "2024-06-23", imageUrl: "onehand.jpg" },
+        { date: "2024-06-24", imageUrl: "posture.jpg" },
         { date: "2024-06-25", imageUrl: "deskStretch.jpg" },
         { date: "2024-06-26", imageUrl: "starjump.jpg" },
         { date: "2024-06-27", imageUrl: "headstretch.jpg" },

@@ -13,33 +13,6 @@ interface PlayerCardProps {
     delay: string;
 }
 
-<<<<<<< HEAD
-const PlayerCard: React.FC<PlayerCardProps> = ({
-  img,
-  img1,
-  img2,
-  img3,
-  name,
-  level,
-  petAmount,
-  questAmount,
-  delay,
-}) => {
-  return (
-    <div
-      className={`w-[90%] my-4 mx-6 flex justify-center bg-[#ffffff] border-2 border-black rounded-2xl animate-slideRight transform -translate-x-full ease-in-out shadow-xl}`}
-      style={{ animationDelay: `${delay}s` }}
-    >
-      <div className="flex w-full flex-row gap-4">
-        <div className="bg-[#1CB87C] bg-gradient-to-t from-green-600 to-green-300 p-2 py-8 flex rounded-l-2xl border-black border-r-2">
-          <Image
-            src={img}
-            alt="Frogman"
-            width={100}
-            height={100}
-            className="flex justify-center items-center border-2 border-black rounded-full"
-          ></Image>
-=======
 const PlayerCard: React.FC<PlayerCardProps> = ({img, img1, img2, img3, name, level, petAmount, questAmount, delay}) => {   
     return (
         <div className={
@@ -72,7 +45,6 @@ const PlayerCard: React.FC<PlayerCardProps> = ({img, img1, img2, img3, name, lev
                     </div>
                 </div>
             </div>
->>>>>>> cfb4ff5b8033078c39519fdc4e7483d9071cea5b
         </div>
     )
 }
