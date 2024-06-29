@@ -31,8 +31,8 @@ const Home: React.FC = () => {
 	return (
 		<>
 			<div className="h-[932px] mx-auto flex flex-col justify-start">
-				<Countdown seconds={10000} />
-				<Dashboard></Dashboard>
+				<Countdown seconds={20000} />
+				{/* <Dashboard></Dashboard> */}
 				<PostList posts={userPosts} />
 				{/* </div> */}
 			</div>

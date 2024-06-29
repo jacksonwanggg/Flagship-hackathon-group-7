@@ -3,10 +3,10 @@
 import { useState, createContext, useContext } from "react";
 import { usePathname } from "next/navigation";
 import "./globals.css";
-import { Caveat } from "next/font/google";
+import { Sora } from "next/font/google";
 import Navbar from "@/components/Navbar";
 
-const inter = Caveat({ subsets: ["latin"] });
+const inter = Sora({ subsets: ["latin"] });
 
 const metadata = {
   title: "FitPets",
@@ -36,7 +36,7 @@ export default function RootLayout({
       <body className={`app-container ${inter.className}`}>
         <PageContext.Provider value={{ activePage, setActivePage }}>
           <div>{children}</div>
-          {pathname !== "/landing" && pathname !== "/login" && <Navbar />}
+          {pathname !== "/landing" && pathname !== "/login" && pathname !== "/register" && <Navbar />}
         </PageContext.Provider>
       </body>
     </html>

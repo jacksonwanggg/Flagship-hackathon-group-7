@@ -102,3 +102,7 @@ body {
     text-wrap: balance;
   }
 }
+
+.countdown {
+  --value: 15;
+}
