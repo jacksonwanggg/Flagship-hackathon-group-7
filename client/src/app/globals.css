@@ -1,18 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 
-/* Import Sora font */
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap');
-
-/* Root variables for color scheme */
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
 
-/* Dark mode media query */
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -21,12 +17,20 @@
   }
 }
 
-/* Apply Sora font family to body and specific elements */
-body {
-  font-family: 'Sora', sans-serif; /* Use Sora font */
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 400 to 700 */
+
+.caveat-font {
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }
 
-/* Global styles */
+body {
+  font-family: 'Caveat', sans-serif;
+}
+
 html,
 body,
 #__next {
@@ -44,10 +48,13 @@ body,
   height: 932px;
   overflow: wrap;
   border: 1px solid #000;
+  font-family: 'caveat-font', sans-serif;
   position: relative;
+  /* display: block; */
+  /* bottom: 0; */
+  /* Optional: for visual debugging */
 }
 
-/* Bottom navigation styles */
 .btm-nav {
   display: flex;
   justify-content: space-around;
@@ -56,8 +63,13 @@ body,
   height: 50px;
   z-index: 1000;
   position: fixed;
+  /* Adjust as necessary */
+  /* position: absolute; */
   bottom: 0;
+  /* Position at the bottom of the container */
   border-top: 1px solid #000;
+  /* Optional: for visual debugging */
+  /* Ensure the background color fits with your design */
 }
 
 .btm-nav a {
@@ -72,15 +84,21 @@ body,
   font-weight: bold;
 }
 
-/* Background and foreground colors */
+
+
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
-/* Utility class example */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.countdown {
+  --value: 15;
 }
