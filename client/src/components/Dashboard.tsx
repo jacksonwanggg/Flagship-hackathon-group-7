@@ -1,6 +1,9 @@
 import React from "react";
 import { PostListProps } from "@/lib/types";
+import QuestInfo from "@/components/QuestInfo";
 import Countdown from "@/components/Countdown";
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import Image from 'next/image';
 
 const Dashboard: React.FC<PostListProps> = ({ posts }) => {
   return (
@@ -18,8 +21,16 @@ const Dashboard: React.FC<PostListProps> = ({ posts }) => {
             </button>
             <dialog id="my_modal_2" className="modal bg-rose-600 outline-none">
               <div className="modal-box">
-                <h3 className="font-bold text-lg">Hello!</h3>
-                <p className="py-4">Press ESC key or click outside to close</p>
+                <div className="flex flex-col w-full">
+                  <p className="text-2xl my-2">TODAY'S QUEST</p>
+                  <QuestInfo questName="Do 50 Pushups" foodCount="50" itemCount="100" itemSrc="/assets/gold.png"/>
+                  <p className="text-2xl my-2">WEEKLY QUEST</p>
+                  <QuestInfo questName="Finish 50,000 Steps" foodCount="350" itemCount="5" itemSrc="/assets/gemston.png"/>
+                  <p className="text-2xl my-2">SIDE QUESTS</p>
+                  <QuestInfo questName="Eye-training Exercise" foodCount="10" itemCount="20" itemSrc="/assets/gold.png" />
+                  <QuestInfo questName="Posture straightening for 30 seconds" foodCount="20" itemCount="30" itemSrc="/assets/gold.png" />
+                  <QuestInfo questName="20 Jumping Jacks" foodCount="25" itemCount="80" itemSrc="/assets/gold.png"/>
+                </div>
               </div>
               <form method="dialog" className="modal-backdrop">
                 <button>close</button>
