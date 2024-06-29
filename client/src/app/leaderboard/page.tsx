@@ -16,19 +16,16 @@ export default function Leaderboard() {
         { img: "/assets/andrew.jpg", img1: "/assets/frogchad.jpg", img2: "/assets/giraffeman.png", img3: "/assets/sheeper.png", name: 'Andrew', level: 230, petAmount: 42, questAmount: 102 },
         { img: "/assets/jackson.jpg", img1: "/assets/sharky.png", img2: "/assets/lizardman.png", img3: "/assets/kitty.png", name: 'Jackson', level: 150, petAmount: 36, questAmount: 75 },
         { img: "/assets/eric.jpg", img1: "/assets/frogman.jpg", img2: "/assets/waterlizard.png", img3: "/assets/giraffeboy.png", name: 'Eric', level: 99, petAmount: 28, questAmount: 65 },
-        { img: "/assets/jerry.jpg", img1: "/assets/chickboy.jpg", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'Jerry', level: 1, petAmount: 3, questAmount: 1 },
-        { img: "/assets/frogchad.jpg", img1: "/assets/sheepchad.png", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'Poopman', level: 500, petAmount: 80, questAmount: 120 },
-        { img: "/assets/frogchad.jpg", img1: "/assets/sheepchad.png", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'Kj', level: 500, petAmount: 80, questAmount: 120 },
+        { img: "/assets/jerry.jpg", img1: "/assets/chickboy.jpg", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'Jerry', level: 1, petAmount: 3, questAmount: 1 }
     ];
 
     const global = [
         { img: "/assets/angella.png", img1: "/assets/monkeychad.png", img2: "/assets/whalechad.png", img3: "/assets/pangolin.png", name: 'Angella', level: 999, petAmount: 90, questAmount: 510 },
         { img: "/assets/richard.png", img1: "/assets/frogchad.jpg", img2: "/assets/hedgehogking.png", img3: "/assets/fairysnake.png", name: 'Richard', level: 999, petAmount: 90, questAmount: 509 },
         { img: "/assets/nicole.jpg", img1: "/assets/duckchad.png", img2: "/assets/sheepchad.png", img3: "/assets/whalechad.png", name: 'Nicole', level: 999, petAmount: 90, questAmount: 520 },
-        { img: "/assets/lebronsunshine.jpg", img1: "/assets/monkeybron.png", img2: "/assets/giraffechad.png", img3: "/assets/giraffeboy.png", name: 'leBron', level: 99, petAmount: 28, questAmount: 35 },
-        { img: "/assets/mexican.png", img1: "/assets/chickboy.jpg", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'leh-Bron', level: 1, petAmount: 3, questAmount: 1 },
-        { img: "/assets/fortnite.png", img1: "/assets/sheepchad.png", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'leGamer', level: 500, petAmount: 80, questAmount: 120 },
-        { img: "/assets/frogchad.jpg", img1: "/assets/sheepchad.png", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'Kj', level: 500, petAmount: 80, questAmount: 120 },
+        { img: "/assets/lebronsunshine.jpg", img1: "/assets/monkeybron.png", img2: "/assets/giraffechad.png", img3: "/assets/giraffeboy.png", name: 'LeBron', level: 998, petAmount: 90, questAmount: 499 },
+        { img: "/assets/mexican.png", img1: "/assets/chickboy.jpg", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'Leh-Bron', level: 997, petAmount: 89, questAmount: 420 },
+        { img: "/assets/fortnite.png", img1: "/assets/sheepchad.png", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'LeGamer', level: 500, petAmount: 80, questAmount: 120 },
     ];
 
     const router = useRouter();
