@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import "./globals.css";
 import { Sora } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import { Toaster } from "react-hot-toast";
 
 const inter = Sora({ subsets: ["latin"] });
 
@@ -31,14 +32,24 @@ export default function RootLayout({
 	const [activePage, setActivePage] = useState("");
 	const pathname = usePathname();
 
-  return (
-    <html lang="en">
-      <body className={`app-container ${inter.className}`}>
-        <PageContext.Provider value={{ activePage, setActivePage }}>
-          <div>{children}</div>
-          {pathname !== "/landing" && pathname !== "/login" && pathname !== "/register" && pathname !== "/profile" && <Navbar />}
-        </PageContext.Provider>
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body className={`app-container ${inter.className}`}>
+				<PageContext.Provider value={{ activePage, setActivePage }}>
+					<div>{children}</div>
+					{pathname !== "/landing" &&
+						pathname !== "/login" &&
+						pathname !== "/register" &&
+						pathname !== "/profile" && <Navbar />}
+					<Toaster
+						containerStyle={{
+							right: 0,
+							left: 10,
+							top: 1000,
+						}}
+					/>
+				</PageContext.Provider>
+			</body>
+		</html>
+	);
 }
