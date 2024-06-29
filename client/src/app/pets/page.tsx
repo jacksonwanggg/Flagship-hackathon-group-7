@@ -1,4 +1,5 @@
 import PetsCarousel from '@/components/PetsCarousel';
+import { initialPets } from '@/components/PetsCarousel';
 
 export default function Page() {
   return (
