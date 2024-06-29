@@ -1,18 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 255, 255, 255;
+    --background-end-rgb: 255, 255, 255;
   }
 }
 
@@ -27,7 +27,8 @@
 }
 
 body {
-  font-family: 'Caveat', sans-serif;
+  font-family: "Caveat", sans-serif;
+  background-color: white;
 }
 
 html,
@@ -47,10 +48,37 @@ body,
   height: 932px;
   overflow: wrap;
   border: 1px solid #000;
-  font-family: 'caveat-font', sans-serif;
+  font-family: "caveat-font", sans-serif;
+  position: relative;
   /* Optional: for visual debugging */
 }
 
+.btm-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  z-index: 1000;
+  /* Adjust as necessary */
+  bottom: 0;
+  /* Position at the bottom of the container */
+  border-top: 1px solid #000;
+  /* Optional: for visual debugging */
+  /* Ensure the background color fits with your design */
+}
+
+.btm-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btm-nav a.active {
+  font-weight: bold;
+}
 
 body {
   color: rgb(var(--foreground-rgb));
