@@ -57,7 +57,3 @@
   border-radius: 10px;
   transition: width 0.5s ease-in-out; /* Ensure the transition is smooth */
 }
-
-.experience-header {
-  margin: 50px;
-}
