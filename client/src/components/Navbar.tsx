@@ -14,7 +14,7 @@ export default function Navbar() {
 	return (
 		<div className="btm-nav relative bottom-0">
 			<Link
-				href="/home"
+				href="/"
 				className={activePage == "home" ? "active" : ""}
 				onClick={() => setActivePage("home")}>
 				<IoHome />

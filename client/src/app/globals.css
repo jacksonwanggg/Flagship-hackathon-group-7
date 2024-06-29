@@ -50,9 +50,8 @@ body,
   border: 1px solid #000;
   font-family: 'caveat-font', sans-serif;
   position: relative;
-  display: block;
-  bottom: 0;
-  
+  /* display: block; */
+  /* bottom: 0; */
   /* Optional: for visual debugging */
 }
 
