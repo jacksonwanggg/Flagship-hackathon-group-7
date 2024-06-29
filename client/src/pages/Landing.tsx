@@ -14,7 +14,7 @@ const Landing = () => {
           <img src="/logobg.png" alt="Logo" className="w-[150px] h-[150px]" />
         </div>
         <div className="absolute inset-0 flex flex-col items-center justify-center space-y-7 mt-[11rem]">
-          <h1 className="text-6xl font-bold text-white mb-4">FitPets</h1>
+          <h1 className="text-6xl font-bold text-white mb-4">FitMon</h1>
           <Link 
             href="/login" 
             className="bg-gradient-to-r from-orange-400 to-orange-600 text-white py-3 px-[4.5rem] text-center border-2 border-[#f8f1ee] text-2xl font-bold rounded-xl transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-orange-500/50"

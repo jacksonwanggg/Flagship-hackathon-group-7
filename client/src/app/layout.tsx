@@ -40,6 +40,7 @@ export default function RootLayout({
 					{pathname !== "/landing" &&
 						pathname !== "/login" &&
 						pathname !== "/register" &&
+            pathname !== "/" &&
 						pathname !== "/profile" && <Navbar />}
 					<Toaster
 						containerStyle={{
