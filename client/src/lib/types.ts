@@ -6,3 +6,8 @@ export interface Post {
 export interface PostListProps {
   posts: Post[];
 }
+
+export interface RouteDataType {
+	name: string;
+	route: string;
+}
