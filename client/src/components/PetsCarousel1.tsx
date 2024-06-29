@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Image from 'next/image';
+import '../styles/pets.module.css';
 
 export interface Pet {
   evolutions: PetEvolution[];
@@ -39,6 +40,26 @@ const initialPets: Pet[] = [
     ],
     experience: 0,
   },
+  {
+    evolutions: [
+      {
+        petName: "Giraffeboy",
+        imagePath: "giraffeboy.png",
+        experience: 0
+      },
+      {
+        petName: 'Giraffechad',
+        imagePath: 'giraffechad.png',
+        experience: 50
+      },
+      {
+        petName: 'Giraffeman',
+        imagePath: 'giraffeman.png',
+        experience: 100
+      }
+    ],
+    experience: 0
+  }
 ];
 
 const responsive = {
@@ -106,9 +127,7 @@ const PetsCarousel: React.FC = () => {
   };
 
   return (
-    <div className="carousel-container">
-      <h1 className="text-6xl font-bold text-center mb-4">Pets</h1>
-      <div className="carousel-background">
+    <div className="carousel-container p-4 rounded-lg">
         {pets.length > 1 ? (
           <Carousel
             responsive={responsive}
@@ -126,11 +145,11 @@ const PetsCarousel: React.FC = () => {
             itemClass="carousel-item"
           >
             {pets.map((pet, index) => (
-              <div key={index} className="carousel-item-content rounded-lg">
-                <div className={`image-container ${animationClass}`}>
+              <div key={index} className="carousel-item-content rounded-lg mb-6">
+                <div className={`image-container ${animationClass} mb-4`}>
                   <Image
                     src={'/assets/' + getPetEvolution(pet).imagePath}
-                    className={`transition-transform duration-500 ${isShrinking && currentPetIndex === index ? 'scale-0' : 'scale-100'} w-full`}
+                    className={`transition-transform duration-500 ${isShrinking && currentPetIndex === index ? 'scale-0' : 'scale-100'} w-full rounded-xl aspect-square object-cover border-4 border-gray-300`}
                     alt={getPetEvolution(pet).petName}
                     width={1000}
                     height={1500}
@@ -147,17 +166,17 @@ const PetsCarousel: React.FC = () => {
                   </button>
                 </div>
                 <progress className="progress mx-auto progress-accent w-full max-w-xs" value={pet.experience} max="100"></progress>
-                <h1 className="text-5xl font-bold text-center mb-4 experience-header">{pet.experience}/100 Experience</h1>
+                <h1 className="text-5xl font-bold text-center mb-4 experience-header">{pet.experience}/100 EXP</h1>
               </div>
             ))}
           </Carousel>
         ) : (
           pets.map((pet, index) => (
-            <div key={index} className="carousel-item-content rounded-lg mx-auto">
-              <div className={`image-container ${animationClass}`}>
+            <div key={index} className="carousel-item-content rounded-lg mx-auto mb-6">
+              <div className={`image-container ${animationClass} mb-4`}>
                 <Image
                   src={'/assets/' + getPetEvolution(pet).imagePath}
-                  className={`transition-transform duration-500 ${isShrinking && currentPetIndex === index ? 'scale-0' : 'scale-100'} w-full`}
+                  className={`transition-transform duration-500 ${isShrinking && currentPetIndex === index ? 'scale-0' : 'scale-100'} w-full rounded-xl aspect-square object-cover border-4 border-gray-300`}
                   alt={getPetEvolution(pet).petName}
                   width={1000}
                   height={1500}
@@ -174,12 +193,11 @@ const PetsCarousel: React.FC = () => {
                 </button>
               </div>
               <progress className="progress mx-auto progress-accent w-full max-w-xs" value={pet.experience} max="100"></progress>
-              <h1 className="text-5xl font-bold text-center mb-4 experience-header">{pet.experience}/100 Experience</h1>
+              <h1 className="text-5xl font-bold text-center mb-4 experience-header">{pet.experience}/100 EXP</h1>
             </div>
           ))
         )}
       </div>
-    </div>
   );
 };
 
