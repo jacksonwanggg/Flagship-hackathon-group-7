@@ -4,31 +4,30 @@ import { Post } from "@/lib/types";
 import { PostListProps } from "@/lib/types";
 
 const PostList: React.FC<PostListProps> = ({ posts }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+	const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.scrollTop = 0;
-    }
-  }, [posts]);
+	useEffect(() => {
+		if (containerRef.current) {
+			containerRef.current.scrollTop = 0;
+		}
+	}, [posts]);
 
-  return (
-    <div
-      ref={containerRef}
-      className="flex flex-col justify-start gap-4 z-1000 bg-white"
-      style={{ overflowY: "auto" }}
-    >
-      {posts.map((post, index) => (
-        <div key={index} className="m-4">
-          <PostCard
-            userName={post.userName}
-            caption={post.caption}
-            // videoURL={post.videoURL}
-          />
-        </div>
-      ))}
-    </div>
-  );
+	return (
+		<div
+			ref={containerRef}
+			className="flex flex-col justify-start gap-4 z-1000 bg-white"
+			style={{ overflowY: "auto" }}>
+			{posts.map((post, index) => (
+				<div key={index} className="m-4">
+					<PostCard
+						userName={post.userName}
+						caption={post.caption}
+						// videoURL={post.videoURL}
+					/>
+				</div>
+			))}
+		</div>
+	);
 };
 
 // const PostList: React.FC<PostListProps> = ({ posts }) => {
