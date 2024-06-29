@@ -1,10 +1,10 @@
 "use client";
-import { FaPaperPlane } from "react-icons/fa";
 import React, { useRef, useState, useCallback, useEffect } from "react";
 import Webcam from "react-webcam";
 import SendIcon from "@mui/icons-material/Send";
 import { IconButton } from "@mui/material";
 import { exercises, ExerciseNameType } from "@/lib/data";
+import axios from "axios";
 
 const Recording: React.FC = () => {
 	const webcamRef = useRef<Webcam>(null);
@@ -46,19 +46,47 @@ const Recording: React.FC = () => {
 		}
 	}, []);
 
+	// const handleDownload = useCallback(() => {
+	// 	if (recordedChunks.length > 0) {
+	// 		const blob = new Blob(recordedChunks, {
+	// 			type: "video/webm",
+	// 		});
+	// 		const url = URL.createObjectURL(blob);
+	// 		const a = document.createElement("a");
+	// 		document.body.appendChild(a);
+	// 		a.style.display = "none";
+	// 		a.href = url;
+	// 		a.download = "recorded_video.webm";
+	// 		a.click();
+	// 		window.URL.revokeObjectURL(url);
+	// 		setRecordedChunks([]);
+	// 	}
+	// }, [recordedChunks]);
+
 	const handleDownload = useCallback(() => {
 		if (recordedChunks.length > 0) {
 			const blob = new Blob(recordedChunks, {
 				type: "video/webm",
 			});
-			const url = URL.createObjectURL(blob);
-			const a = document.createElement("a");
-			document.body.appendChild(a);
-			a.style.display = "none";
-			a.href = url;
-			a.download = "recorded_video.webm";
-			a.click();
-			window.URL.revokeObjectURL(url);
+			const formData = new FormData();
+			formData.append("video", blob, "recorded_video.webm");
+
+			axios
+				.post("http://localhost:3000/upload", formData, {
+					headers: {
+						"Content-Type": "multipart/form-data",
+					},
+				})
+				.then((response) => {
+					console.log(
+						"File uploaded successfully:",
+						response.data.filePath
+					);
+				})
+				.catch((error) => {
+					console.error("Error uploading file:", error);
+				});
+
 			setRecordedChunks([]);
 		}
 	}, [recordedChunks]);
