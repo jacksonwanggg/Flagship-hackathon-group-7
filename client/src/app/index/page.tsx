@@ -16,22 +16,11 @@ import { WiNightAltCloudyGusts } from "react-icons/wi";
 
 const Home: React.FC = () => {
 	const [userPosts, setUserPosts] = useState<Post[]>(posts);
-	// const [dataLoaded, setDataLoaded] = useState<boolean>(false);
-
-	// useEffect(() => {
-	// 	const getPosts = async () => {
-	// 		const fetchedPosts = await fetchPosts();
-	// 		setPosts(fetchedPosts);
-	// 		setDataLoaded(true);
-	// 	};
-
-	// 	getPosts();
-	// }, []);
 
 	return (
 		<>
 			<div className="h-[932px] mx-auto flex flex-col justify-start">
-				<Countdown seconds={20000} />
+				<Countdown seconds={5} />
 				{/* <Dashboard></Dashboard> */}
 				<PostList posts={userPosts} />
 				{/* </div> */}
