@@ -10,6 +10,8 @@ import {
 } from "react-icons/io5";
 import "../styles/pets.module.css";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+const sound = new Audio('/eating-sound-effect-36186.mp3');
+const levelup = new Audio('/cute-level-up-2-189851.mp3');
 import {
   MainContainer,
   ChatContainer,
@@ -128,8 +130,10 @@ const PetsCarousel: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
 
   const handleFeedClick = (pet: Pet, index: number) => {
+    sound.play();
     setCurrentPetIndex(index);
     if (goingToEvolutionise(pet)) {
+      levelup.play();
       setIsShrinking(true);
     }
     setTimeout(() => {
@@ -292,28 +296,27 @@ const PetsCarousel: React.FC = () => {
             >
               {messages.map((msg, index) => (
                 <Message
-                  key={index}
-                  className={`text-box ${msg.direction === 'outgoing' ? 'outgoing-message' : 'incoming-message'}`}
-                  model={{
-                    message: msg.message,
-                    direction: msg.direction === 'outgoing' ? 'outgoing' : 'incoming',
-                    position: 'single',
-                  }}
-                  style={{
-                    // color: msg.direction === 'outgoing' ? 'white' : 'black', // Change text color based on direction
-                    // backgroundColor: msg.direction === 'outgoing' ? '#007bff' : '#28a745', // Example background color
-                    // borderRadius: '10px', // Example border radius
-                    // padding: '8px 12px', // Example padding
-                    // marginBottom: '8px',
-                  }}
-                />
+                key={index}
+                className={`text-box ${msg.direction === 'outgoing' ? 'outgoing-message' : 'incoming-message'}`}
+                model={{
+                  message: msg.message,
+                  direction: msg.direction === 'outgoing' ? 'outgoing' : 'incoming',
+                  position: 'single',
+                }}
+                style={{
+                }}
+              >
+              {msg.message}
+              </Message>
               ))}
             </MessageList>
               <MessageInput
                 className='text-box'
                 placeholder='Type message here...'
                 onSend={handleSend}
-                style={{ color: 'black', backgroundColor: 'white'}}
+                style={{ 
+                  color: 'black', 
+                }}
               />
             </ChatContainer>
           </MainContainer>
