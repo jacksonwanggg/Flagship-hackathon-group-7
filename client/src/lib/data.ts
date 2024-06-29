@@ -27,8 +27,70 @@ export const navBarPageRoutes = [
 ] as const;
 
 export type ExerciseNameType = (typeof exercises)[number]["name"];
-
 export const exercises = [
+	{
+		name: "Jumping Jacks",
+		duration: 30,
+		reward: 10,
+	},
+	{
+		name: "Wall Sit",
+		duration: 30,
+		reward: 10,
+	},
+	{
+		name: "Push Ups",
+		duration: 30,
+		reward: 15,
+	},
+	{
+		name: "Abdominal Crunch",
+		duration: 30,
+		reward: 15,
+	},
+	{
+		name: "Step Up Onto Chair",
+		duration: 30,
+		reward: 20,
+	},
+	{
+		name: "Squat",
+		duration: 30,
+		reward: 15,
+	},
+	{
+		name: "Tricep Dip On Chair",
+		duration: 30,
+		reward: 15,
+	},
+	{
+		name: "Plank",
+		duration: 30,
+		reward: 20,
+	},
+	{
+		name: "High Knees",
+		duration: 30,
+		reward: 10,
+	},
+	{
+		name: "Lunge",
+		duration: 30,
+		reward: 15,
+	},
+	{
+		name: "Push Up And Rotation",
+		duration: 30,
+		reward: 20,
+	},
+	{
+		name: "Side Plank",
+		duration: 30,
+		reward: 20,
+	},
+];
+
+/* export const exercises = [
 	{
 		name: "Jumping Jacks",
 		duration: 30,
@@ -77,4 +139,4 @@ export const exercises = [
 		name: "Side Plank",
 		duration: 30,
 	},
-];
+]; */
