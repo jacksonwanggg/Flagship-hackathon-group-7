@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -28,7 +28,7 @@
 }
 
 body {
-  font-family: 'Caveat', sans-serif;
+  font-family: "Caveat", sans-serif;
 }
 
 html,
@@ -48,7 +48,7 @@ body,
   height: 932px;
   overflow: wrap;
   border: 1px solid #000;
-  font-family: 'caveat-font', sans-serif;
+  font-family: "caveat-font", sans-serif;
   position: relative;
   /* display: block; */
   /* bottom: 0; */
@@ -88,9 +88,12 @@ body,
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
+  background: linear-gradient(
+      to bottom,
       transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
@@ -101,4 +104,39 @@ body {
 
 .countdown {
   --value: 15;
+}
+
+@keyframes background-pan {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: -200% center;
+  }
+}
+
+.gradientEffect {
+  --peach: rgba(243, 112, 112, 0.838);
+  --red: rgb(212, 57, 30);
+
+  background: linear-gradient(to right, var(--peach), var(--red), var(--peach));
+  animation: background-pan 4s reverse infinite;
+  background-size: 200%;
+  z-index: 50;
+}
+
+.feedGradientEffect {
+  --lavender: rgb(164, 84, 245);
+  --blue: rgb(48, 107, 208);
+
+  background: linear-gradient(
+    to right,
+    var(--lavender),
+    var(--blue),
+    var(--lavender)
+  );
+  animation: background-pan 4s reverse infinite;
+  background-size: 200%;
+  z-index: 50;
 }

@@ -1,6 +1,10 @@
 export interface Post {
-	userName: string;
-	caption: string;
+  userName: string;
+  caption: string;
+}
+
+export interface PostListProps {
+  posts: Post[];
 }
 
 export interface RouteDataType {
