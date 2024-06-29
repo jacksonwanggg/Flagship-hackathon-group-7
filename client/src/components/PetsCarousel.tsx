@@ -7,6 +7,8 @@ import "../styles/pets.module.css";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 const sound = new Audio('/eating-sound-effect-36186.mp3');
 const levelup = new Audio('/cute-level-up-2-189851.mp3');
+const error = new Audio('/error.mp3');
+
 import {
   MainContainer,
   ChatContainer,
@@ -37,17 +39,17 @@ export const initialPets: Pet[] = [
   {
     evolutions: [
       {
-        petName: "Frogman",
+        petName: "Fropple",
         imagePath: "frogman.jpg",
         experience: 0,
       },
       {
-        petName: "Frogmanner",
+        petName: "Frapple",
         imagePath: "frogmanner.jpg",
         experience: 50,
       },
       {
-        petName: "Frogchad",
+        petName: "Frapchad",
         imagePath: "frogchad.jpg",
         experience: 100,
       },
@@ -57,18 +59,38 @@ export const initialPets: Pet[] = [
   {
     evolutions: [
       {
-        petName: "Giraffeboy",
+        petName: "Girffy",
         imagePath: "giraffeboy.png",
         experience: 0,
       },
       {
-        petName: "Giraffechad",
+        petName: "Girfa",
         imagePath: "giraffechad.png",
         experience: 50,
       },
       {
-        petName: "Giraffeman",
+        petName: "Girfchad",
         imagePath: "giraffeman.png",
+        experience: 100,
+      },
+    ],
+    experience: 0,
+  },
+  {
+    evolutions: [
+      {
+        petName: "Sheeple",
+        imagePath: "firesheep.png",
+        experience: 0,
+      },
+      {
+        petName: "Rammington",
+        imagePath: "sheeper.png",
+        experience: 50,
+      },
+      {
+        petName: "Ramchad",
+        imagePath: "sheepchad.png",
         experience: 100,
       },
     ],
@@ -118,6 +140,7 @@ const PetsCarousel: React.FC = () => {
   const [currentPetIndex, setCurrentPetIndex] = useState<number | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [chat, setChat] = useState(false);
+  const [feed, setFeed] = useState("FEED");
   const [messages, setMessages] = useState([
     {
       message: "Hiiii, please go workout, to feed me and make me happy!",
@@ -128,10 +151,21 @@ const PetsCarousel: React.FC = () => {
   ]);
   const [isTyping, setIsTyping] = useState(false);
 
+  const getFeedButtonText = (pet: Pet): String => {
+    if (pet.experience === 100) {
+      return "MAX LEVEL";
+    }
+    return "FEED";
+  }
   const handleFeedClick = (pet: Pet, index: number) => {
-    sound.play();
+    if (!(getFeedButtonText(pet) === "MAX LEVEL")) {
+      sound.play();
+    } else {
+      error.play();
+    }
+
     if (currency < feedCost) {
-      alert("Not enough currency to feed the pet!");
+      alert("Not enough food to feed the pet!");
       return;
     }
 
@@ -144,6 +178,7 @@ const PetsCarousel: React.FC = () => {
       setIsShrinking(true);
     }
     if (pet.experience >= 100) {
+      setIsShrinking(false);
       return;
     }
     setTimeout(() => {
@@ -258,11 +293,11 @@ const PetsCarousel: React.FC = () => {
                 height={800}
               />
             </div>
-            <h2 className="text-4xl font-bold text-center mt-4">
+            <h2 className="text-4xl text-white font-bold text-center mt-4">
               {getPetEvolution(pet).petName}
             </h2>
             <div className="flex justify-center items-center mb-4">
-              <button className="text-center" onClick={() => setChat(!chat)}>
+              <button className="text-center text-white" onClick={() => setChat(!chat)}>
                 {chat
                   ? `Close chat with ${getPetEvolution(pet).petName}`
                   : `Chat with ${getPetEvolution(pet).petName}`}
@@ -274,7 +309,7 @@ const PetsCarousel: React.FC = () => {
               onClick={() => handleFeedClick(pet, index)}
               className="text-white text-2xl bg-gradient-to-br from-purple-600 to-blue-800 hover:bg-gradient-to-bl  dark:focus:ring-blue-800 font-medium rounded-lg w-64 py-1 text-center mb-2 flex items-center justify-center transition-transform transform active:scale-95"
             >
-              FEED
+              {getFeedButtonText(pet)}
             </button>
             </div>
             <div className="flex justify-center my-4">
@@ -284,7 +319,7 @@ const PetsCarousel: React.FC = () => {
                 max="100"
               ></progress>
             </div>
-            <h1 className="text-3xl font-bold text-center mb-4">
+            <h1 className="text-3xl text-white font-bold text-center mb-4">
               {pet.experience}/100 EXP
             </h1>
           </div>
