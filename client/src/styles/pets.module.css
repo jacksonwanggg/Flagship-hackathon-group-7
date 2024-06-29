@@ -1,0 +1,63 @@
+/* page.css */
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Adjust as needed to fit your layout */
+  background-color: #f0f0f0; /* Optional: background color for the entire container */
+}
+
+.carousel-background {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa; /* Background color for the carousel */
+  padding: 20px; /* Optional: padding around the carousel */
+}
+
+.carousel-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.carousel-item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Add this to your CSS file (e.g., styles.css or a Tailwind CSS file) */
+.progress {
+  transition: width 0.5s ease-in-out;
+}
+
+.progress::-webkit-progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 10px;
+}
+
+.progress::-webkit-progress-value {
+  background-color: #4caf50;
+  border-radius: 10px;
+  transition: width 0.5s ease-in-out; /* Ensure the transition is smooth */
+}
+
+.progress::-moz-progress-bar {
+  background-color: #4caf50;
+  border-radius: 10px;
+  transition: width 0.5s ease-in-out; /* Ensure the transition is smooth */
+}
+
+.experience-header {
+  margin: 50px;
+}

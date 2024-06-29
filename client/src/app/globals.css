@@ -55,6 +55,12 @@ body,
   /* Optional: for visual debugging */
 }
 
+.vertical-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .btm-nav {
   display: flex;
   justify-content: space-around;
@@ -83,8 +89,6 @@ body,
 .btm-nav a.active {
   font-weight: bold;
 }
-
-
 
 body {
   color: rgb(var(--foreground-rgb));
