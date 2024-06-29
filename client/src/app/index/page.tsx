@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react";
 import PostList from "@/components/PostCardList";
-import Dashboard from "@/components/Dashboard";
 import Countdown from "@/components/Countdown";
+import Dashboard from "@/pages/Dashboard";
 import posts from "../../../public/assets/posts";
 import { Post } from "@/lib/types";
+import { WiNightAltCloudyGusts } from "react-icons/wi";
 
 // const fetchPosts = async (): Promise<Post[]> => {
 // 	const res = await fetch("/assets/posts.json");
@@ -29,9 +30,9 @@ const Home: React.FC = () => {
 
 	return (
 		<>
-			<div className="container mx-auto flex flex-col">
+			<div className="h-[932px] mx-auto flex flex-col justify-start">
 				<Countdown seconds={10000} />
-				{/* <div> */}
+				<Dashboard></Dashboard>
 				<PostList posts={userPosts} />
 				{/* </div> */}
 			</div>
