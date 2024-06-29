@@ -12,6 +12,7 @@ import {
   MessageInput,
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
+import { IoChatbubbleEllipsesOutline, IoChatbubbleEllipsesSharp } from "react-icons/io5";
 
 const API_KEY = "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";
 
@@ -284,6 +285,82 @@ const PetsCarousel: React.FC = () => {
           </div>
         ))}
       </Carousel>
+      {!chat ? (
+      <IoChatbubbleEllipsesOutline
+        className='chat-btn'
+        style={{
+          position: 'fixed',
+          bottom: '15px',
+          right: '10px',
+          height: '10px',
+          width: '40px',
+        }}
+        onClick={() => setChat(true)}
+      />
+    ) : (
+      <div className='chat'>
+        <div
+          style={{
+            position: 'fixed',
+            bottom: '60px',
+            minWidth: '75%',
+            right: '12%',
+            height: '30%', // Adjust the height here
+            width: '250px', // Adjust the background color here
+            border: '1px solid #ccc',
+            borderRadius: '10px',
+            overflowY: 'auto'
+          }}
+        >
+          <MainContainer>
+            <ChatContainer>
+            <MessageList
+              typingIndicator={isTyping && <TypingIndicator content='ChatGPT is typing' />}
+              className='custom-message-list'
+            >
+              {messages.map((msg, index) => (
+                <Message
+                  key={index}
+                  className={`text-box ${msg.direction === 'outgoing' ? 'outgoing-message' : 'incoming-message'}`}
+                  model={{
+                    message: msg.message,
+                    direction: msg.direction === 'outgoing' ? 'outgoing' : 'incoming',
+                    position: 'single',
+                  }}
+                  style={{
+                    // color: msg.direction === 'outgoing' ? 'white' : 'black', // Change text color based on direction
+                    // backgroundColor: msg.direction === 'outgoing' ? '#007bff' : '#28a745', // Example background color
+                    // borderRadius: '10px', // Example border radius
+                    // padding: '8px 12px', // Example padding
+                    // marginBottom: '8px',
+                  }}
+                />
+              ))}
+            </MessageList>
+              <MessageInput
+                className='text-box'
+                placeholder='Type message here...'
+                onSend={handleSend}
+                style={{ color: 'black', backgroundColor: 'white'}}
+              />
+            </ChatContainer>
+          </MainContainer>
+        </div>
+        <IoChatbubbleEllipsesSharp
+          className='chat-btn'
+          style={{
+            position: 'fixed',
+            bottom: '15px',
+            right: '20px',
+            height: '40px',
+            width: '40px',
+            transform: 'scaleX(-1)',
+          }}
+          onClick={() => setChat(false)}
+        />
+      </div>
+    )}
+
       <div className="flex justify-center items-center py-6">
         <h2 className="text-4xl font-bold text-black">{currency}</h2>
 
