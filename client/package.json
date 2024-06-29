@@ -9,6 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.21",
+>>>>>>> 68a5fe9b954f858539a6d164685acb7582441ae9
     "framer-motion": "^11.2.12",
     "next": "14.2.4",
     "react": "^18",
