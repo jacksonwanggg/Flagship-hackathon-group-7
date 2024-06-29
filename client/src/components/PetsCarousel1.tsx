@@ -23,12 +23,12 @@ const initialPets: Pet[] = [
   {
     evolutions: [
       {
-        petName: "Frogman",
+        petName: "Frog",
         imagePath: "frogman.jpg",
         experience: 0,
       },
       {
-        petName: "Frogmanner",
+        petName: "Frogman",
         imagePath: "frogmanner.jpg",
         experience: 50,
       },
@@ -43,17 +43,17 @@ const initialPets: Pet[] = [
   {
     evolutions: [
       {
-        petName: "Giraffeboy",
+        petName: "Giraffy",
         imagePath: "giraffeboy.png",
         experience: 0
       },
       {
-        petName: 'Giraffechad',
+        petName: 'Giraffe',
         imagePath: 'giraffechad.png',
         experience: 50
       },
       {
-        petName: 'Giraffeman',
+        petName: 'Giraffam',
         imagePath: 'giraffeman.png',
         experience: 100
       }
