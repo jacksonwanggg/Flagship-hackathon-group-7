@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import PetsCarousel from '@/components/PetsCarousel1';
+import PetsCarousel from '@/components/PetsCarousel';
 import Collections from '@mui/icons-material/AutoStories';
 
 export default function Page() {
