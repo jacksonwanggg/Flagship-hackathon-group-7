@@ -117,7 +117,7 @@ body {
 }
 
 .gradientEffect {
-  --peach: rgba(243, 112, 112, 0.838);
+  --peach: rgba(238, 15, 82, 0.838);
   --red: rgb(212, 57, 30);
 
   background: linear-gradient(to right, var(--peach), var(--red), var(--peach));

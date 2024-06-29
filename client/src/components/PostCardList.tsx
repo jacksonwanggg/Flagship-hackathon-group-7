@@ -10,7 +10,7 @@ const PostList: React.FC<PostListProps> = ({}) => {
 	return (
 		<div
 			ref={containerRef}
-			className="flex flex-col justify-start gap-4 z-1000 bg-white"
+			className="flex flex-col justify-start gap-4 z-1000 bg-white rounded-t-[30px] py-5"
 			style={{ overflowY: "auto" }}>
 			{posts.map((post, index) => (
 				<div key={index} className="m-4">
