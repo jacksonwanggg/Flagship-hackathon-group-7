@@ -17,25 +17,6 @@ export default function Navbar() {
 		useState<string>("black-400");
 	const [toGradientColor, setToGradientColor] = useState<string>("black-400");
 
-	// const getGradientColors = (routeName: string) => {
-	// 	const gradient: GradientColor = pageGradientColorsHex[routeName];
-	// 	console.log(
-	// 		gradient
-	// 			? `from-${gradient.fromGradient} to-${gradient.toGradient}`
-	// 			: "gradient not found"
-	// 	);
-	// 	return gradient
-	// 		? `from-${gradient.fromGradient} to-${gradient.toGradient}`
-	// 		: "";
-	// };
-
-	// const getPrimaryColor = (routeName: string) => {
-	// 	const gradient: GradientColor = pageGradientColorsHex[routeName];
-	// 	console.log(gradient);
-	// 	console.log(activePage ? activePage : "no active page");
-	// 	return gradient ? gradient.fromGradient : "";
-	// };
-
 	const formatGradientColor = (fromGradient: string, toGradient: string) => {
 		return `bg-gradient-to-t from-${fromGradient} to-${toGradient}`;
 	};

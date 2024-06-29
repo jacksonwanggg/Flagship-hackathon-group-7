@@ -1,9 +1,11 @@
-"use client";
+// src/pages/login.tsx
+import React from 'react';
+import Landing from '../pages/Landing';
 
-import Image from "next/image";
-import Navbar from "@/components/Navbar";
-import Home from "./index/page";
+const Login = () => {
+  return <>
+    <Landing />
+  </>;
+};
 
-export default function Page() {
-  return <Home />;
-}
+export default Login;

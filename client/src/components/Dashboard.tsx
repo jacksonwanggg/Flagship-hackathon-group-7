@@ -2,23 +2,23 @@ import React from "react";
 import { PostListProps } from "@/lib/types";
 import QuestInfo from "@/components/QuestInfo";
 import Countdown from "@/components/Countdown";
-import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 import Image from 'next/image';
 
 const Dashboard: React.FC<PostListProps> = ({ posts }) => {
   return (
-    <div className="hero max-w-sm mx-auto bg-transparent rounded-xl p-4">
+    <div className="hero w-full mx-auto bg-transparent rounded-xl px-4">
       <div className="hero-content text-center bg-rose-600">
+        <button
+              className=" right-[9%] absolute top-[2.5%] w-[35px] bg-rose-600"
+              onClick={() => document.getElementById("my_modal_2")?.showModal()}
+            > <AssignmentIcon className="text-white scale-[1.5] absolute " />
+          </button>
         <div className="flex flex-col">
-          <div className="flex flex-row p-4">
-            <div className="pb-3">I just did some pushups</div>
+
+          <div className="flex flex-row m-2">
             {/* Open the modal using document.getElementById('ID').showModal() method */}
-            <button
-              className="btn bg-rose-600 outline-none"
-              onClick={() => document.getElementById("my_modal_2").showModal()}
-            >
-              open modal
-            </button>
+
             <dialog id="my_modal_2" className="modal bg-rose-600 outline-none">
               <div className="modal-box">
                 <div className="flex flex-col w-full">
@@ -39,9 +39,17 @@ const Dashboard: React.FC<PostListProps> = ({ posts }) => {
           </div>
           <div className="max-w-md bg-transparent">
             <figure>
-              <video width="600" autoPlay className="rounded-xl">
-                <source src="/assets/test.webm" type="video/webm" />
-              </video>
+              <video
+                  width="600"
+                  autoPlay
+                  controls
+                  className="rounded-xl mt-7">
+                  {/* <source src={post.url} type="video/webm" /> */}
+                  <source
+                    src="/assets/upload/filename.webm"
+                    type="video/webm"
+                  />
+                </video>
             </figure>
             <Countdown seconds={5} />
             {/*<p className="py-6">{posts[0].caption}</p>*/}

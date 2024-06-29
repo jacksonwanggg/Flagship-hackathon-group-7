@@ -5,6 +5,13 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Image from "next/image";
 import "../styles/pets.module.css";
+import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+const sound = new Audio('/eating-sound-effect-36186.mp3');
+const levelup = new Audio('/cute-level-up-2-189851.mp3');
+const error = new Audio('/error.mp3');
+
+const maxExp = 80;
+
 import {
   MainContainer,
   ChatContainer,
@@ -35,19 +42,19 @@ export const initialPets: Pet[] = [
   {
     evolutions: [
       {
-        petName: "Frogman",
+        petName: "Fropple",
         imagePath: "frogman.jpg",
         experience: 0,
       },
       {
-        petName: "Frogmanner",
+        petName: "Frapple",
         imagePath: "frogmanner.jpg",
-        experience: 50,
+        experience: maxExp * 0.5,
       },
       {
-        petName: "Frogchad",
+        petName: "Frapchad",
         imagePath: "frogchad.jpg",
-        experience: 100,
+        experience: maxExp,
       },
     ],
     experience: 0,
@@ -55,19 +62,39 @@ export const initialPets: Pet[] = [
   {
     evolutions: [
       {
-        petName: "Giraffeboy",
+        petName: "Girffy",
         imagePath: "giraffeboy.png",
         experience: 0,
       },
       {
-        petName: "Giraffechad",
+        petName: "Girfa",
         imagePath: "giraffechad.png",
-        experience: 50,
+        experience: maxExp * 0.5,
       },
       {
-        petName: "Giraffeman",
+        petName: "Girfchad",
         imagePath: "giraffeman.png",
-        experience: 100,
+        experience: maxExp,
+      },
+    ],
+    experience: 0,
+  },
+  {
+    evolutions: [
+      {
+        petName: "Sheeple",
+        imagePath: "firesheep.png",
+        experience: 0,
+      },
+      {
+        petName: "Rammington",
+        imagePath: "sheeper.png",
+        experience: maxExp * 0.5,
+      },
+      {
+        petName: "Ramchad",
+        imagePath: "sheepchad.png",
+        experience: maxExp,
       },
     ],
     experience: 0,
@@ -116,6 +143,7 @@ const PetsCarousel: React.FC = () => {
   const [currentPetIndex, setCurrentPetIndex] = useState<number | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [chat, setChat] = useState(false);
+  const [feed, setFeed] = useState("FEED");
   const [messages, setMessages] = useState([
     {
       message: "Hiiii, please go workout, to feed me and make me happy!",
@@ -126,20 +154,34 @@ const PetsCarousel: React.FC = () => {
   ]);
   const [isTyping, setIsTyping] = useState(false);
 
+  const getFeedButtonText = (pet: Pet): String => {
+    if (pet.experience === maxExp) {
+      return "MAX LEVEL";
+    }
+    return "FEED";
+  }
   const handleFeedClick = (pet: Pet, index: number) => {
+    if (!(getFeedButtonText(pet) === "MAX LEVEL")) {
+      sound.play();
+    } else {
+      error.play();
+    }
+
     if (currency < feedCost) {
-      alert("Not enough currency to feed the pet!");
+      alert("Not enough food to feed the pet!");
       return;
     }
 
     setCurrentPetIndex(index);
-    if (pet.experience !== 100) {
+    if (pet.experience !== maxExp) {
       setIsAnimating(true);
     }
     if (goingToEvolutionise(pet)) {
+      levelup.play();
       setIsShrinking(true);
     }
-    if (pet.experience >= 100) {
+    if (pet.experience >= maxExp) {
+      setIsShrinking(false);
       return;
     }
     setTimeout(() => {
@@ -254,11 +296,11 @@ const PetsCarousel: React.FC = () => {
                 height={800}
               />
             </div>
-            <h2 className="text-4xl font-bold text-center mt-4">
+            <h2 className="text-4xl text-white font-bold text-center mt-4">
               {getPetEvolution(pet).petName}
             </h2>
             <div className="flex justify-center items-center mb-4">
-              <button className="text-center" onClick={() => setChat(!chat)}>
+              <button className="text-center text-white" onClick={() => setChat(!chat)}>
                 {chat
                   ? `Close chat with ${getPetEvolution(pet).petName}`
                   : `Chat with ${getPetEvolution(pet).petName}`}
@@ -270,18 +312,18 @@ const PetsCarousel: React.FC = () => {
               onClick={() => handleFeedClick(pet, index)}
               className="text-white text-2xl bg-gradient-to-br from-purple-600 to-blue-800 hover:bg-gradient-to-bl  dark:focus:ring-blue-800 font-medium rounded-lg w-64 py-1 text-center mb-2 flex items-center justify-center transition-transform transform active:scale-95"
             >
-              FEED
+              {getFeedButtonText(pet)}
             </button>
             </div>
             <div className="flex justify-center my-4">
               <progress
                 className="progress progress-accent w-full max-w-xs"
                 value={pet.experience}
-                max="100"
+                max={maxExp}
               ></progress>
             </div>
-            <h1 className="text-3xl font-bold text-center mb-4">
-              {pet.experience}/100 EXP
+            <h1 className="text-3xl text-white font-bold text-center mb-4">
+              {pet.experience}/{maxExp} EXP
             </h1>
           </div>
         ))}
@@ -293,8 +335,8 @@ const PetsCarousel: React.FC = () => {
           position: 'fixed',
           bottom: '15px',
           right: '10px',
-          height: '10px',
-          width: '40px',
+          height: '1px',
+          width: '1px',
         }}
         onClick={() => setChat(true)}
       />
@@ -316,33 +358,32 @@ const PetsCarousel: React.FC = () => {
           <MainContainer>
             <ChatContainer>
             <MessageList
-              typingIndicator={isTyping && <TypingIndicator content='ChatGPT is typing' />}
+              typingIndicator={isTyping && <TypingIndicator content="Your pet is typing" />}
               className='custom-message-list'
             >
               {messages.map((msg, index) => (
                 <Message
-                  key={index}
-                  className={`text-box ${msg.direction === 'outgoing' ? 'outgoing-message' : 'incoming-message'}`}
-                  model={{
-                    message: msg.message,
-                    direction: msg.direction === 'outgoing' ? 'outgoing' : 'incoming',
-                    position: 'single',
-                  }}
-                  style={{
-                    // color: msg.direction === 'outgoing' ? 'white' : 'black', // Change text color based on direction
-                    // backgroundColor: msg.direction === 'outgoing' ? '#007bff' : '#28a745', // Example background color
-                    // borderRadius: '10px', // Example border radius
-                    // padding: '8px 12px', // Example padding
-                    // marginBottom: '8px',
-                  }}
-                />
+                key={index}
+                className={`text-box ${msg.direction === 'outgoing' ? 'outgoing-message' : 'incoming-message'}`}
+                model={{
+                  message: msg.message,
+                  direction: msg.direction === 'outgoing' ? 'outgoing' : 'incoming',
+                  position: 'single',
+                }}
+                style={{
+                }}
+              >
+              {msg.message}
+              </Message>
               ))}
             </MessageList>
               <MessageInput
                 className='text-box'
                 placeholder='Type message here...'
                 onSend={handleSend}
-                style={{ color: 'black', backgroundColor: 'white'}}
+                style={{ 
+                  color: 'black', 
+                }}
               />
             </ChatContainer>
           </MainContainer>

@@ -29,7 +29,7 @@ const Login = () => {
                 <a>Forgot Password?</a>
               </Link>
             </div>
-            <Link href="/" legacyBehavior>
+            <Link href="/home" legacyBehavior>
               <a className="bg-gradient-to-r from-orange-400 to-orange-600 text-white py-3 px-[4.5rem] text-center border-2 border-[#f8f1ee] text-2xl font-bold rounded-xl transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-orange-500/50">
                 Login
               </a>
