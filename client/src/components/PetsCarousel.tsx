@@ -29,7 +29,7 @@ export interface PetEvolution {
 const expIncrement = 5;
 const feedCost = 10; // cost of feeding a pet
 
-const initialPets: Pet[] = [
+export const initialPets: Pet[] = [
   {
     evolutions: [
       {
@@ -220,7 +220,7 @@ const PetsCarousel: React.FC = () => {
   }
 
   return (
-    <div className="w-full rounded-[30px]">
+    <div className="w-full rounded-[30px] animate-slideUp">
       <Carousel
         responsive={responsive}
         swipeable
@@ -266,25 +266,9 @@ const PetsCarousel: React.FC = () => {
             <button
               type="button"
               onClick={() => handleFeedClick(pet, index)}
-              className="text-white text-2xl bg-gradient-to-br from-purple-600 to-blue-800 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg w-64 py-1 text-center mb-2 flex items-center justify-center transition-transform transform active:scale-95"
+              className="text-white text-2xl bg-gradient-to-br from-purple-600 to-blue-800 hover:bg-gradient-to-bl  dark:focus:ring-blue-800 font-medium rounded-lg w-64 py-1 text-center mb-2 flex items-center justify-center transition-transform transform active:scale-95"
             >
               FEED
-              <Image
-                src="/assets/food.png"
-                alt="food"
-                width={50}
-                height={50}
-                className=""
-              />
-              {isAnimating && currentPetIndex === index && (
-                  <Image
-                    src="/assets/food.png"
-                    alt="food"
-                    width={50}
-                    height={50}
-                    className="absolute z-50 animate-foodSlideUp delay-200"
-                  />
-              )}
             </button>
             </div>
             <div className="flex justify-center my-4">
@@ -302,7 +286,23 @@ const PetsCarousel: React.FC = () => {
       </Carousel>
       <div className="flex justify-center items-center py-6">
         <h2 className="text-4xl font-bold text-black">{currency}</h2>
-        <Image src="/assets/gold.png" alt="money" className="mx-3" width={50} height={50}></Image>
+
+              <Image
+                src="/assets/food.png"
+                alt="food"
+                width={50}
+                height={50}
+                className=""
+              />
+              {isAnimating && (
+                  <Image
+                    src="/assets/food.png"
+                    alt="food"
+                    width={50}
+                    height={50}
+                    className="absolute z-50 animate-foodSlideUp delay-200"
+                  />
+              )}
       </div>
     </div>
   );

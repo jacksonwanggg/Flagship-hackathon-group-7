@@ -31,9 +31,9 @@ const config: Config = {
       keyframes: {
         foodSlideUp: {
           "0%": { transform: "translateY(0) scale(1)", opacity: "1" },
-          "50%": { transform: "translateY(-100px) scale(5)", opacity: "1" },
-          "95%": { transform: "translateY(-250px) scale(1.5)", opacity: "1" },
-          "100%": { transform: "translateY(-250px) scale(0)", opacity: "1" },
+          "50%": { transform: "translateY(-200px) scale(5)", opacity: "1" },
+          "95%": { transform: "translateY(-400px) scale(1.5)", opacity: "1" },
+          "100%": { transform: "translateY(-400px) scale(0)", opacity: "1" },
         },
         fadeIn: {
           "0%": {
