@@ -291,7 +291,7 @@ const PetsCarousel: React.FC = () => {
           <MainContainer>
             <ChatContainer>
             <MessageList
-              typingIndicator={isTyping && <TypingIndicator content='ChatGPT is typing' />}
+              typingIndicator={isTyping && <TypingIndicator content="Your pet is typing" />}
               className='custom-message-list'
             >
               {messages.map((msg, index) => (
