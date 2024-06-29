@@ -11,7 +11,7 @@ const Landing = () => {
       </Head>
       <div className={styles.loginPage}>
         <div className="absolute top-10 inset-x-0 flex justify-center items-center mt-[13.5rem]">
-          <img src="/logo.png" alt="Logo" className="w-[150px] h-[150px]" />
+          <img src="/logobg.png" alt="Logo" className="w-[150px] h-[150px]" />
         </div>
         <div className="absolute inset-0 flex flex-col items-center justify-center space-y-7 mt-[11rem]">
           <h1 className="text-6xl font-bold text-white mb-4">FitPets</h1>
