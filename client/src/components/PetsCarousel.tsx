@@ -227,14 +227,8 @@ const PetsCarousel: React.FC = () => {
           itemClass="carousel-item"
         >
           {pets.map((pet, index) => (
-            <div key={index} className="carousel-item-content rounded-lg mb-6">
-              <div
-                className={`image-container mb-4 ${
-                  isShrinking && currentPetIndex === index
-                    ? "scale-0"
-                    : "scale-100"
-                }`}
-              >
+            <div key={index} className={`carousel-item-content rounded-[30px] m-6 border-4 border-blue-500 bg-gradient-to-b from-blue-500 to-purple-600 transition-transform duration-500 ${isShrinking && currentPetIndex === index ? 'scale-0' : 'scale-100'}`}>
+              <div className="image-container m-6">
                 <Image
                   src={`/assets/${getPetEvolution(pet).imagePath}`}
                   className="w-full rounded-xl aspect-square object-cover border-4 border-gray-300"
@@ -243,14 +237,10 @@ const PetsCarousel: React.FC = () => {
                   height={1500}
                 />
               </div>
-              <h2 className="text-5xl font-bold text-center mt-4">
-                {getPetEvolution(pet).petName}
-              </h2>
-              <div className="flex justify-center items-center">
-                <button className="text-center" onClick={() => setChat(!chat)}>
-                  {chat
-                    ? `Close chat with ${getPetEvolution(pet).petName}`
-                    : `Chat with ${getPetEvolution(pet).petName}`}
+              <h2 className="text-5xl font-bold text-center mt-4">{getPetEvolution(pet).petName}</h2>
+              <div className="flex justify-center items-center mb-4">
+                <button className='text-center' onClick={() => setChat(!chat)}>
+                  {chat ? `Close chat with ${getPetEvolution(pet).petName}` : `Chat with ${getPetEvolution(pet).petName}`}
                 </button>
               </div>
               <div className="flex justify-center mt-4">
@@ -262,103 +252,86 @@ const PetsCarousel: React.FC = () => {
                   FEED
                 </button>
               </div>
-              <progress
-                className="progress mx-auto progress-accent w-full max-w-xs"
-                value={pet.experience}
-                max="100"
-              ></progress>
-              <h1 className="text-5xl font-bold text-center mb-4 experience-header">
-                {pet.experience}/100 EXP
-              </h1>
+              <progress className="progress m-6 progress-accent w-full max-w-xs" value={pet.experience} max="100"></progress>
+              <h1 className="text-5xl font-bold text-center mb-4">{pet.experience}/100 EXP</h1>
             </div>
           ))}
         </Carousel>
-             {!chat ? (
-        <IoChatbubbleEllipsesOutline
-          className="chat-btn"
+      {!chat ? (
+      <IoChatbubbleEllipsesOutline
+        className='chat-btn'
+        style={{
+          position: 'fixed',
+          bottom: '15px',
+          right: '10px',
+          height: '10px',
+          width: '40px',
+        }}
+        onClick={() => setChat(true)}
+      />
+    ) : (
+      <div className='chat'>
+        <div
           style={{
-            position: "fixed",
-            bottom: "15px",
-            right: "10px",
-            height: "10px",
-            width: "40px",
+            position: 'fixed',
+            bottom: '60px',
+            minWidth: '75%',
+            right: '12%',
+            height: '30%', // Adjust the height here
+            width: '250px', // Adjust the background color here
+            border: '1px solid #ccc',
+            borderRadius: '10px',
+            overflowY: 'auto'
           }}
-          onClick={() => setChat(true)}
-        />
-      ) : (
-        <div className="chat">
-          <div
-            style={{
-              position: "fixed",
-              bottom: "60px",
-              minWidth: "75%",
-              right: "12%",
-              height: "30%", // Adjust the height here
-              width: "250px", // Adjust the background color here
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              overflowY: "auto",
-            }}
-          >
-            <MainContainer>
-              <ChatContainer>
-                <MessageList
-                  typingIndicator={
-                    isTyping && <TypingIndicator content="ChatGPT is typing" />
-                  }
-                  className="custom-message-list"
-                >
-                  {messages.map((msg, index) => (
-                    <Message
-                      key={index}
-                      className={`text-box ${
-                        msg.direction === "outgoing"
-                          ? "outgoing-message"
-                          : "incoming-message"
-                      }`}
-                      model={{
-                        message: msg.message,
-                        direction:
-                          msg.direction === "outgoing"
-                            ? "outgoing"
-                            : "incoming",
-                        position: "single",
-                      }}
-                      style={
-                        {
-                          // color: msg.direction === 'outgoing' ? 'white' : 'black', // Change text color based on direction
-                          // backgroundColor: msg.direction === 'outgoing' ? '#007bff' : '#28a745', // Example background color
-                          // borderRadius: '10px', // Example border radius
-                          // padding: '8px 12px', // Example padding
-                          // marginBottom: '8px',
-                        }
-                      }
-                    />
-                  ))}
-                </MessageList>
-                <MessageInput
-                  className="text-box"
-                  placeholder="Type message here..."
-                  onSend={handleSend}
-                  style={{ color: "black", backgroundColor: "white" }}
+        >
+          <MainContainer>
+            <ChatContainer>
+            <MessageList
+              typingIndicator={isTyping && <TypingIndicator content='ChatGPT is typing' />}
+              className='custom-message-list'
+            >
+              {messages.map((msg, index) => (
+                <Message
+                  key={index}
+                  className={`text-box ${msg.direction === 'outgoing' ? 'outgoing-message' : 'incoming-message'}`}
+                  model={{
+                    message: msg.message,
+                    direction: msg.direction === 'outgoing' ? 'outgoing' : 'incoming',
+                    position: 'single',
+                  }}
+                  style={{
+                    // color: msg.direction === 'outgoing' ? 'white' : 'black', // Change text color based on direction
+                    // backgroundColor: msg.direction === 'outgoing' ? '#007bff' : '#28a745', // Example background color
+                    // borderRadius: '10px', // Example border radius
+                    // padding: '8px 12px', // Example padding
+                    // marginBottom: '8px',
+                  }}
                 />
-              </ChatContainer>
-            </MainContainer>
-          </div>
-          <IoChatbubbleEllipsesSharp
-            className="chat-btn"
-            style={{
-              position: "fixed",
-              bottom: "15px",
-              right: "20px",
-              height: "40px",
-              width: "40px",
-              transform: "scaleX(-1)",
-            }}
-            onClick={() => setChat(false)}
-          />
+              ))}
+            </MessageList>
+              <MessageInput
+                className='text-box'
+                placeholder='Type message here...'
+                onSend={handleSend}
+                style={{ color: 'black', backgroundColor: 'white'}}
+              />
+            </ChatContainer>
+          </MainContainer>
         </div>
-      )}
+        <IoChatbubbleEllipsesSharp
+          className='chat-btn'
+          style={{
+            position: 'fixed',
+            bottom: '15px',
+            right: '20px',
+            height: '40px',
+            width: '40px',
+            transform: 'scaleX(-1)',
+          }}
+          onClick={() => setChat(false)}
+        />
+      </div>
+    )}
     </div>
   );
 };
