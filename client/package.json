@@ -13,13 +13,9 @@
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",
-<<<<<<< HEAD
-    "react-router-dom": "^6.24.0",
-    "typescript": "^5.5.2"
-=======
+    "typescript": "^5.5.2",
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.24.0"
->>>>>>> 8fc4bac6bb40e28a91d26902f89d066983743c86
   },
   "devDependencies": {
     "@types/node": "^20",
