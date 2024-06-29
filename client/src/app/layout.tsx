@@ -36,7 +36,7 @@ export default function RootLayout({
       <body className={`app-container ${inter.className}`}>
         <PageContext.Provider value={{ activePage, setActivePage }}>
           <div>{children}</div>
-          {pathname !== "/landing" && pathname !== "/login" && pathname !== "/register" && <Navbar />}
+          {pathname !== "/landing" && pathname !== "/login" && pathname !== "/register" && pathname !== "/profile" && <Navbar />}
         </PageContext.Provider>
       </body>
     </html>

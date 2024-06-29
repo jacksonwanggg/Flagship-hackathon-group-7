@@ -23,8 +23,8 @@ export default function Leaderboard() {
         { img: "/assets/angella.png", img1: "/assets/monkeychad.png", img2: "/assets/whalechad.png", img3: "/assets/pangolin.png", name: 'Angella', level: 999, petAmount: 90, questAmount: 510 },
         { img: "/assets/richard.png", img1: "/assets/frogchad.jpg", img2: "/assets/hedgehogking.png", img3: "/assets/fairysnake.png", name: 'Richard', level: 999, petAmount: 90, questAmount: 509 },
         { img: "/assets/nicole.jpg", img1: "/assets/duckchad.png", img2: "/assets/sheepchad.png", img3: "/assets/whalechad.png", name: 'Nicole', level: 999, petAmount: 90, questAmount: 520 },
-        { img: "/assets/lebronsunshine.jpg", img1: "/assets/monkeybron.png", img2: "/assets/giraffechad.png", img3: "/assets/giraffeboy.png", name: 'lebron', level: 99, petAmount: 28, questAmount: 35 },
-        { img: "/assets/mexican.png", img1: "/assets/chickboy.jpg", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'lehbron', level: 1, petAmount: 3, questAmount: 1 },
+        { img: "/assets/lebronsunshine.jpg", img1: "/assets/monkeybron.png", img2: "/assets/giraffechad.png", img3: "/assets/giraffeboy.png", name: 'leBron', level: 99, petAmount: 28, questAmount: 35 },
+        { img: "/assets/mexican.png", img1: "/assets/chickboy.jpg", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'leh-Bron', level: 1, petAmount: 3, questAmount: 1 },
         { img: "/assets/fortnite.png", img1: "/assets/sheepchad.png", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'leGamer', level: 500, petAmount: 80, questAmount: 120 },
         { img: "/assets/frogchad.jpg", img1: "/assets/sheepchad.png", img2: "/assets/sharkchad.png", img3: "/assets/giraffechad.png", name: 'Kj', level: 500, petAmount: 80, questAmount: 120 },
     ];
@@ -32,7 +32,7 @@ export default function Leaderboard() {
     return (
         <div className="w-screen h-screen bg-gradient-to-t from-green-700 to-green-400">
             <div className='py-8 pb-4 border-b-1'>
-                <div className='flex flex-col justify-center gap-4'>
+                <div className='flex flex-col justify-center gap-4 '>
                     <PersonAddIcon className='flex justify-end ml-[89%] absolute text-white scale-[1.5]' />
                     <p className='text-4xl font-bold text-white flex justify-center'>Leaderboard </p>
                 </div>
@@ -52,7 +52,7 @@ export default function Leaderboard() {
                     </button>
                 </div>
             </div>
-            <div className='bg-white py-2 h-full rounded-t-[30px] overflow-y-auto'>
+            <div className='bg-white py-2 h-fit rounded-t-[30px] overflow-y-auto'>
                 {tab === 'friends' && (
                     <div className='visible'>
                         {friends.map((player, index) => (
