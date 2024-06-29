@@ -1,7 +1,9 @@
-export default function Page() {
-  return (
-    <>
-      <div>create and replace with component</div>
-    </>
-  );
-}
+// src/pages/login.tsx
+import React from 'react';
+import LoginPage from '../../pages/loginpage';
+
+const Login = () => {
+  return <LoginPage />;
+};
+
+export default Login;
