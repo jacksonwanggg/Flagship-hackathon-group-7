@@ -77,13 +77,15 @@ const Recording: React.FC = () => {
 				className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4"
 				onClick={() => {
 					if (capturing) {
+						console.log("stopping");
 						handleStopCaptureClick();
-						if (recordedChunks.length > 0) handleDownload();
+						console.log("recordedChunks", recordedChunks.length);
+						// if (recordedChunks.length > 0) handleDownload();
+						handleDownload();
 					} else {
 						handleStartCaptureClick();
 					}
 					// capturing ? handleDownload() : handleStartCaptureClick();
-					setCapturing(!capturing);
 				}}>
 				{capturing ? (
 					<button className="btn btn-circle btn-outline transition-opacity btn-ghost opacity-80">

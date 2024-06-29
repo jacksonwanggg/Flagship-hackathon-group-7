@@ -26,7 +26,7 @@ const Countdown = ({ seconds }: CountdownProps) => {
 	}, [timeLeft, router]);
 
 	return (
-		<div className="flex flex-col z-1000">
+		<div className="flex z-1000">
 			<p>Countdown: {timeLeft}s</p>
 		</div>
 	);
