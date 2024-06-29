@@ -66,7 +66,7 @@ const Recording: React.FC = () => {
 	}, [recordedChunks]);
 
 	return (
-		<div className="relative bottom-[-20rem] w-[96.5%] mx-auto">
+		<div className="relative w-[96.5%] mx-auto">
 			<Webcam
 				className="flex justify-between rounded-lg"
 				audio={true}
