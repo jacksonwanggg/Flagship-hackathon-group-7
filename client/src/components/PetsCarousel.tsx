@@ -297,8 +297,8 @@ const PetsCarousel: React.FC = () => {
           position: 'fixed',
           bottom: '15px',
           right: '10px',
-          height: '10px',
-          width: '40px',
+          height: '1px',
+          width: '1px',
         }}
         onClick={() => setChat(true)}
       />

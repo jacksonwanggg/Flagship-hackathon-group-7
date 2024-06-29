@@ -6,7 +6,7 @@ import { MdOutlinePets } from "react-icons/md";
 export const navBarPageRoutes = [
 	{
 		name: "Home",
-		route: "/",
+		route: "/home",
 	},
 	{
 		name: "Pets",
