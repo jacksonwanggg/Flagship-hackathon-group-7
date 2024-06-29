@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import "./globals.css";
 import { Sora } from "next/font/google";
@@ -9,27 +9,27 @@ import Navbar from "@/components/Navbar";
 const inter = Sora({ subsets: ["latin"] });
 
 const metadata = {
-  title: "FitPets",
-  description: "Really Fit Pets",
+	title: "FitPets",
+	description: "Really Fit Pets",
 };
 
 type PageContextType = {
-  activePage: string;
-  setActivePage: React.Dispatch<React.SetStateAction<string>>;
+	activePage: string;
+	setActivePage: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const PageContext = createContext<PageContextType>({
-  activePage: "home",
-  setActivePage: () => {},
+	activePage: "",
+	setActivePage: (string) => {},
 });
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  const [activePage, setActivePage] = useState("home");
-  const pathname = usePathname();
+	const [activePage, setActivePage] = useState("");
+	const pathname = usePathname();
 
   return (
     <html lang="en">

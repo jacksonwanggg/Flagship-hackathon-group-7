@@ -1,12 +1,15 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import Image from 'next/image';
-import { IoChatbubbleEllipsesOutline, IoChatbubbleEllipsesSharp } from 'react-icons/io5';
-import '../styles/pets.module.css';
-import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+import React, { useState } from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import Image from "next/image";
+import {
+  IoChatbubbleEllipsesOutline,
+  IoChatbubbleEllipsesSharp,
+} from "react-icons/io5";
+import "../styles/pets.module.css";
+import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {
   MainContainer,
   ChatContainer,
@@ -14,9 +17,9 @@ import {
   Message,
   MessageInput,
   TypingIndicator,
-} from '@chatscope/chat-ui-kit-react';
+} from "@chatscope/chat-ui-kit-react";
 
-const API_KEY = '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';
+const API_KEY = "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";
 
 export interface Pet {
   evolutions: PetEvolution[];
@@ -60,13 +63,13 @@ const initialPets: Pet[] = [
         experience: 0,
       },
       {
-        petName: 'Giraffechad',
-        imagePath: 'giraffechad.png',
+        petName: "Giraffechad",
+        imagePath: "giraffechad.png",
         experience: 50,
       },
       {
-        petName: 'Giraffeman',
-        imagePath: 'giraffeman.png',
+        petName: "Giraffeman",
+        imagePath: "giraffeman.png",
         experience: 100,
       },
     ],
@@ -95,14 +98,17 @@ const responsive = {
 
 function getPetEvolution(pet: Pet): PetEvolution {
   return pet.evolutions.reduce((currentEvolution, nextEvolution) =>
-    nextEvolution.experience <= pet.experience ? nextEvolution : currentEvolution
+    nextEvolution.experience <= pet.experience
+      ? nextEvolution
+      : currentEvolution
   );
 }
 
 function goingToEvolutionise(pet: Pet): boolean {
-  return pet.evolutions.some((evolution) =>
-    pet.experience < evolution.experience &&
-    evolution.experience - (pet.experience + expIncrement) <= expIncrement
+  return pet.evolutions.some(
+    (evolution) =>
+      pet.experience < evolution.experience &&
+      evolution.experience - (pet.experience + expIncrement) <= expIncrement
   );
 }
 
@@ -114,9 +120,9 @@ const PetsCarousel: React.FC = () => {
   const [messages, setMessages] = useState([
     {
       message: "Hiiii, please go workout, to feed me and make me happy!",
-      sentTime: 'just now',
-      sender: 'Pet',
-      direction: 'incoming',
+      sentTime: "just now",
+      sender: "Pet",
+      direction: "incoming",
     },
   ]);
   const [isTyping, setIsTyping] = useState(false);
@@ -129,7 +135,10 @@ const PetsCarousel: React.FC = () => {
     setTimeout(() => {
       setPets((prevPets) => {
         const updatedPets = [...prevPets];
-        updatedPets[index].experience = Math.min(updatedPets[index].experience + expIncrement, 100);
+        updatedPets[index].experience = Math.min(
+          updatedPets[index].experience + expIncrement,
+          100
+        );
         return updatedPets;
       });
       setIsShrinking(false);
@@ -144,9 +153,9 @@ const PetsCarousel: React.FC = () => {
   const handleSend = async (text: string) => {
     const userMessage = {
       message: text,
-      direction: 'outgoing',
-      sender: 'user',
-      sentTime: new Date().toLocaleTimeString(), 
+      direction: "outgoing",
+      sender: "user",
+      sentTime: new Date().toLocaleTimeString(),
     };
 
     setMessages([...messages, userMessage]);
@@ -156,42 +165,46 @@ const PetsCarousel: React.FC = () => {
   };
 
   const systemMessage = {
-    role: 'system',
-    content: "You are a pet, you are talking to your owner and they are taking care of you.",
+    role: "system",
+    content:
+      "You are a pet, you are talking to your owner and they are taking care of you.",
   };
 
   async function processMessageToChatGPT(chatMessages: any[]) {
     const apiMessages = chatMessages.map((messageObject) => ({
-      role: messageObject.sender === 'Pet' ? 'assistant' : 'user',
+      role: messageObject.sender === "Pet" ? "assistant" : "user",
       content: messageObject.message,
     }));
 
     const apiRequestBody = {
-      model: 'gpt-3.5-turbo',
+      model: "gpt-3.5-turbo",
       messages: [systemMessage, ...apiMessages],
     };
 
     try {
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(apiRequestBody),
-      });
+      const response = await fetch(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(apiRequestBody),
+        }
+      );
       const data = await response.json();
       setMessages([
         ...chatMessages,
         {
           message: data.choices[0].message.content,
-          sender: 'Pet',
-          direction: 'incoming',
+          sender: "Pet",
+          direction: "incoming",
         },
       ]);
       setIsTyping(false);
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
       setIsTyping(false);
     }
   }
@@ -216,7 +229,13 @@ const PetsCarousel: React.FC = () => {
         >
           {pets.map((pet, index) => (
             <div key={index} className="carousel-item-content rounded-lg mb-6">
-              <div className={`image-container mb-4 ${isShrinking && currentPetIndex === index ? 'scale-0' : 'scale-100'}`}>
+              <div
+                className={`image-container mb-4 ${
+                  isShrinking && currentPetIndex === index
+                    ? "scale-0"
+                    : "scale-100"
+                }`}
+              >
                 <Image
                   src={`/assets/${getPetEvolution(pet).imagePath}`}
                   className="transition-transform duration-500 w-full rounded-xl aspect-square object-cover border-4 border-gray-300"
@@ -225,10 +244,14 @@ const PetsCarousel: React.FC = () => {
                   height={1500}
                 />
               </div>
-              <h2 className="text-5xl font-bold text-center mt-4">{getPetEvolution(pet).petName}</h2>
+              <h2 className="text-5xl font-bold text-center mt-4">
+                {getPetEvolution(pet).petName}
+              </h2>
               <div className="flex justify-center items-center">
-                <button className='text-center' onClick={() => setChat(!chat)}>
-                  {chat ? `Close chat with ${getPetEvolution(pet).petName}` : `Chat with ${getPetEvolution(pet).petName}`}
+                <button className="text-center" onClick={() => setChat(!chat)}>
+                  {chat
+                    ? `Close chat with ${getPetEvolution(pet).petName}`
+                    : `Chat with ${getPetEvolution(pet).petName}`}
                 </button>
               </div>
               <div className="flex justify-center mt-4">
@@ -240,15 +263,30 @@ const PetsCarousel: React.FC = () => {
                   FEED
                 </button>
               </div>
-              <progress className="progress mx-auto progress-accent w-full max-w-xs" value={pet.experience} max="100"></progress>
-              <h1 className="text-5xl font-bold text-center mb-4 experience-header">{pet.experience}/100 EXP</h1>
+              <progress
+                className="progress mx-auto progress-accent w-full max-w-xs"
+                value={pet.experience}
+                max="100"
+              ></progress>
+              <h1 className="text-5xl font-bold text-center mb-4 experience-header">
+                {pet.experience}/100 EXP
+              </h1>
             </div>
           ))}
         </Carousel>
       ) : (
         pets.map((pet, index) => (
-          <div key={index} className="carousel-item-content rounded-lg mx-auto mb-6">
-            <div className={`image-container mb-4 ${isShrinking && currentPetIndex === index ? 'scale-0' : 'scale-100'}`}>
+          <div
+            key={index}
+            className="carousel-item-content rounded-lg mx-auto mb-6"
+          >
+            <div
+              className={`image-container mb-4 ${
+                isShrinking && currentPetIndex === index
+                  ? "scale-0"
+                  : "scale-100"
+              }`}
+            >
               <Image
                 src={`/assets/${getPetEvolution(pet).imagePath}`}
                 className="transition-transform duration-500 w-full rounded-xl aspect-square object-cover border-4 border-gray-300"
@@ -257,7 +295,9 @@ const PetsCarousel: React.FC = () => {
                 height={1500}
               />
             </div>
-            <h2 className="text-5xl font-bold text-center mt-4">{getPetEvolution(pet).petName}</h2>
+            <h2 className="text-5xl font-bold text-center mt-4">
+              {getPetEvolution(pet).petName}
+            </h2>
             <div className="flex justify-center mt-4">
               <button
                 type="button"
@@ -267,86 +307,103 @@ const PetsCarousel: React.FC = () => {
                 FEED
               </button>
             </div>
-            <progress className="progress mx-auto progress-accent w-full max-w-xs" value={pet.experience} max="100"></progress>
-            <h1 className="text-5xl font-bold text-center mb-4 experience-header">{pet.experience}/100 EXP</h1>
+            <progress
+              className="progress mx-auto progress-accent w-full max-w-xs"
+              value={pet.experience}
+              max="100"
+            ></progress>
+            <h1 className="text-5xl font-bold text-center mb-4 experience-header">
+              {pet.experience}/100 EXP
+            </h1>
           </div>
         ))
       )}
       {!chat ? (
-      <IoChatbubbleEllipsesOutline
-        className='chat-btn'
-        style={{
-          position: 'fixed',
-          bottom: '15px',
-          right: '10px',
-          height: '10px',
-          width: '40px',
-        }}
-        onClick={() => setChat(true)}
-      />
-    ) : (
-      <div className='chat'>
-        <div
+        <IoChatbubbleEllipsesOutline
+          className="chat-btn"
           style={{
-            position: 'fixed',
-            bottom: '60px',
-            minWidth: '75%',
-            right: '12%',
-            height: '30%', // Adjust the height here
-            width: '250px', // Adjust the background color here
-            border: '1px solid #ccc',
-            borderRadius: '10px',
-            overflowY: 'auto'
+            position: "fixed",
+            bottom: "15px",
+            right: "10px",
+            height: "10px",
+            width: "40px",
           }}
-        >
-          <MainContainer>
-            <ChatContainer>
-            <MessageList
-              typingIndicator={isTyping && <TypingIndicator content='ChatGPT is typing' />}
-              className='custom-message-list'
-            >
-              {messages.map((msg, index) => (
-                <Message
-                  key={index}
-                  className={`text-box ${msg.direction === 'outgoing' ? 'outgoing-message' : 'incoming-message'}`}
-                  model={{
-                    message: msg.message,
-                    direction: msg.direction === 'outgoing' ? 'outgoing' : 'incoming',
-                    position: 'single',
-                  }}
-                  style={{
-                    // color: msg.direction === 'outgoing' ? 'white' : 'black', // Change text color based on direction
-                    // backgroundColor: msg.direction === 'outgoing' ? '#007bff' : '#28a745', // Example background color
-                    // borderRadius: '10px', // Example border radius
-                    // padding: '8px 12px', // Example padding
-                    // marginBottom: '8px',
-                  }}
-                />
-              ))}
-            </MessageList>
-              <MessageInput
-                className='text-box'
-                placeholder='Type message here...'
-                onSend={handleSend}
-                style={{ color: 'black', backgroundColor: 'white'}}
-              />
-            </ChatContainer>
-          </MainContainer>
-        </div>
-        <IoChatbubbleEllipsesSharp
-          className='chat-btn'
-          style={{
-            position: 'fixed',
-            bottom: '15px',
-            right: '20px',
-            height: '40px',
-            width: '40px',
-            transform: 'scaleX(-1)',
-          }}
-          onClick={() => setChat(false)}
+          onClick={() => setChat(true)}
         />
-      </div>
-    )}
+      ) : (
+        <div className="chat">
+          <div
+            style={{
+              position: "fixed",
+              bottom: "60px",
+              minWidth: "75%",
+              right: "12%",
+              height: "30%", // Adjust the height here
+              width: "250px", // Adjust the background color here
+              border: "1px solid #ccc",
+              borderRadius: "10px",
+              overflowY: "auto",
+            }}
+          >
+            <MainContainer>
+              <ChatContainer>
+                <MessageList
+                  typingIndicator={
+                    isTyping && <TypingIndicator content="ChatGPT is typing" />
+                  }
+                  className="custom-message-list"
+                >
+                  {messages.map((msg, index) => (
+                    <Message
+                      key={index}
+                      className={`text-box ${
+                        msg.direction === "outgoing"
+                          ? "outgoing-message"
+                          : "incoming-message"
+                      }`}
+                      model={{
+                        message: msg.message,
+                        direction:
+                          msg.direction === "outgoing"
+                            ? "outgoing"
+                            : "incoming",
+                        position: "single",
+                      }}
+                      style={
+                        {
+                          // color: msg.direction === 'outgoing' ? 'white' : 'black', // Change text color based on direction
+                          // backgroundColor: msg.direction === 'outgoing' ? '#007bff' : '#28a745', // Example background color
+                          // borderRadius: '10px', // Example border radius
+                          // padding: '8px 12px', // Example padding
+                          // marginBottom: '8px',
+                        }
+                      }
+                    />
+                  ))}
+                </MessageList>
+                <MessageInput
+                  className="text-box"
+                  placeholder="Type message here..."
+                  onSend={handleSend}
+                  style={{ color: "black", backgroundColor: "white" }}
+                />
+              </ChatContainer>
+            </MainContainer>
+          </div>
+          <IoChatbubbleEllipsesSharp
+            className="chat-btn"
+            style={{
+              position: "fixed",
+              bottom: "15px",
+              right: "20px",
+              height: "40px",
+              width: "40px",
+              transform: "scaleX(-1)",
+            }}
+            onClick={() => setChat(false)}
+          />
+        </div>
+      )}
     </div>
   );
 };
