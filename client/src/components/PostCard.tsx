@@ -36,8 +36,8 @@ const PostCard: React.FC<PostCardProps> = ({
   delay,
 }) => {
   return (
-    <div className="card bg-base-100 w-96 shadow-xl bg-red-400">
-      <div className="gradientEffect card-body bg-red-400 rounded-t-xl">
+    <div className="card bg-base-100 w-96 shadow-xl bg-red-400 shadow-2xl">
+      <div className="gradientEffect card-body bg-red-400 rounded-t-xl shadow-2xl">
         <div className="flex flex-right space-x-5">
           <Image
             src="/assets/jackson.jpg"
