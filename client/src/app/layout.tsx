@@ -31,24 +31,14 @@ export default function RootLayout({
 	const [activePage, setActivePage] = useState("");
 	const pathname = usePathname();
 
-	useEffect(() => {
-		// Extract the page name from the pathname
-		if (!pathname) return;
-		const page = pathname === "/" ? "Home" : pathname.slice(1);
-		setActivePage(page.charAt(0).toUpperCase() + page.slice(1));
-		console.log(activePage);
-	}, [pathname]);
-
-	return (
-		<html lang="en">
-			<body className={`app-container ${inter.className}`}>
-				<PageContext.Provider value={{ activePage, setActivePage }}>
-					<div>{children}</div>
-					{pathname !== "/landing" &&
-						pathname !== "/login" &&
-						pathname !== "/register" && <Navbar />}
-				</PageContext.Provider>
-			</body>
-		</html>
-	);
+  return (
+    <html lang="en">
+      <body className={`app-container ${inter.className}`}>
+        <PageContext.Provider value={{ activePage, setActivePage }}>
+          <div>{children}</div>
+          {pathname !== "/landing" && pathname !== "/login" && pathname !== "/register" && pathname !== "/profile" && <Navbar />}
+        </PageContext.Provider>
+      </body>
+    </html>
+  );
 }
