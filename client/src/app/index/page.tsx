@@ -47,7 +47,7 @@ const Home: React.FC = () => {
 			const url = index === 0 ? latestFile : "";
 			return { ...post, url };
 		});
-		setPostsWithUrls(combined); 
+		setPostsWithUrls(combined);
 	}, [latestFile]);
 
 	return (

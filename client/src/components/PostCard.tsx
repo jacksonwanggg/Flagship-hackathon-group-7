@@ -10,12 +10,14 @@ import SendRoundedIcon from "@mui/icons-material/SendRounded";
 
 interface PostCardProps {
 	userName: string;
+	profileUrl: string;
 	caption: string;
 	url: string;
 }
 
 const PostCard: React.FC<PostCardProps> = ({
 	userName,
+	profileUrl,
 	caption,
 	url,
 }: PostCardProps) => {
@@ -24,7 +26,7 @@ const PostCard: React.FC<PostCardProps> = ({
 			<div className="gradientEffect card-body bg-red-400 rounded-t-xl shadow-2xl">
 				<div className="flex flex-right space-x-5">
 					<Image
-						src="/assets/jackson.jpg"
+						src={profileUrl}
 						alt="placeholder"
 						width={70}
 						height={70}
@@ -39,7 +41,7 @@ const PostCard: React.FC<PostCardProps> = ({
 				</div>
 			</div>
 			<figure>
-				<video width="600" autoPlay controls>
+				<video width="600" controls>
 					{/* <source src={url} type="video/webm" /> */}
 					<source
 						// src="/assets/upload/1719683683972-recorded_video.webm"
