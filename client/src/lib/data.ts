@@ -33,41 +33,41 @@ export const exercises = [
 		duration: 30,
 		reward: 10,
 	},
-	{
-		name: "Wall Sit",
-		duration: 30,
-		reward: 10,
-	},
-	{
-		name: "Push Ups",
-		duration: 30,
-		reward: 15,
-	},
-	{
-		name: "Abdominal Crunch",
-		duration: 30,
-		reward: 15,
-	},
-	{
-		name: "Step Up Onto Chair",
-		duration: 30,
-		reward: 20,
-	},
+	// {
+	// 	name: "Wall Sit",
+	// 	duration: 30,
+	// 	reward: 10,
+	// },
+	// {
+	// 	name: "Push Ups",
+	// 	duration: 30,
+	// 	reward: 15,
+	// },
+	// {
+	// 	name: "Abdominal Crunch",
+	// 	duration: 30,
+	// 	reward: 15,
+	// },
+	// {
+	// 	name: "Step Up Onto Chair",
+	// 	duration: 30,
+	// 	reward: 20,
+	// },
 	{
 		name: "Squat",
 		duration: 30,
 		reward: 15,
 	},
-	{
-		name: "Tricep Dip On Chair",
-		duration: 30,
-		reward: 15,
-	},
-	{
-		name: "Plank",
-		duration: 30,
-		reward: 20,
-	},
+	// {
+	// 	name: "Tricep Dip On Chair",
+	// 	duration: 30,
+	// 	reward: 15,
+	// },
+	// {
+	// 	name: "Plank",
+	// 	duration: 30,
+	// 	reward: 20,
+	// },
 	{
 		name: "High Knees",
 		duration: 30,
@@ -78,16 +78,16 @@ export const exercises = [
 		duration: 30,
 		reward: 15,
 	},
-	{
-		name: "Push Up And Rotation",
-		duration: 30,
-		reward: 20,
-	},
-	{
-		name: "Side Plank",
-		duration: 30,
-		reward: 20,
-	},
+	// {
+	// 	name: "Push Up And Rotation",
+	// 	duration: 30,
+	// 	reward: 20,
+	// },
+	// {
+	// 	name: "Side Plank",
+	// 	duration: 30,
+	// 	reward: 20,
+	// },
 ];
 
 /* export const exercises = [
