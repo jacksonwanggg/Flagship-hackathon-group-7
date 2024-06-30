@@ -221,7 +221,7 @@ const PetsCarousel: React.FC = () => {
   const systemMessage = {
     role: "system",
     content:
-      "You are a pet, you are talking to your owner and they are taking care of you.",
+      "You are a pet companion, you are talking to your owner and they are taking care of you, you need to take care of your owner (they might have mental health problems), and your a frog adn the owner works out to feed you and your name is fropple and you have to eat and evolutiionise, for your owner to get food they need to workout and do the quests and the daily exceercise and to elvove you need to eat where i get it from doing tasks from the quest page in the socials page.",
   };
 
   async function processMessageToChatGPT(chatMessages: any[]) {
