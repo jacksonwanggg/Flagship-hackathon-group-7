@@ -18,6 +18,7 @@ const PostList: React.FC<PostListProps> = ({}) => {
 						userName={post.userName}
 						caption={post.caption}
 						url={post.url}
+						profileUrl={post.profileUrl}
 						// videoURL={post.videoURL}
 					/>
 				</div>
