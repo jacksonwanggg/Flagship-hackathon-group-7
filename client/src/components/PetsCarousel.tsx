@@ -22,7 +22,7 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 import { IoChatbubbleEllipsesOutline, IoChatbubbleEllipsesSharp } from "react-icons/io5";
 
-const API_KEY = "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";
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 export interface Pet {
   evolutions: PetEvolution[];
