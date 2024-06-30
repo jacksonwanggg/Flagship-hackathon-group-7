@@ -138,7 +138,7 @@ function goingToEvolutionise(pet: Pet): boolean {
 
 const PetsCarousel: React.FC = () => {
   const [pets, setPets] = useState<Pet[]>(initialPets);
-  const [currency, setCurrency] = useState<number>(200); // initial amount of currency
+  const [currency, setCurrency] = useState<number>(100); // initial amount of currency
   const [isShrinking, setIsShrinking] = useState(false);
   const [currentPetIndex, setCurrentPetIndex] = useState<number | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -292,8 +292,8 @@ const PetsCarousel: React.FC = () => {
                 src={`/assets/${getPetEvolution(pet).imagePath}`}
                 className="w-full rounded-xl aspect-square object-cover border-4 border-gray-300"
                 alt={getPetEvolution(pet).petName}
-                width={800}
-                height={800}
+                width={600}
+                height={600}
               />
             </div>
             <h2 className="text-4xl text-white font-bold text-center mt-4">
@@ -403,25 +403,26 @@ const PetsCarousel: React.FC = () => {
       </div>
     )}
 
-      <div className="flex justify-center items-center py-6">
-        <h2 className="text-4xl font-bold text-black">{currency}</h2>
-
-              <Image
-                src="/assets/food.png"
-                alt="food"
-                width={50}
-                height={50}
-                className=""
-              />
-              {isAnimating && (
-                  <Image
-                    src="/assets/food.png"
-                    alt="food"
-                    width={50}
-                    height={50}
-                    className="absolute z-50 animate-foodSlideUp delay-200"
-                  />
-              )}
+      <div className="text-center flex flex-row justify-center mx-[80px] rounded-[30px] py-2 bg-gradient-to-t from-blue-300 to-blue-500 mt-[20px] shadow-2xl">
+        <h2 className="text-4xl font-bold text-white my-2 inline-block">{currency}</h2>
+          <div className="inline-block">
+            <Image
+              src="/assets/food.png"
+              alt="food"
+              width={50}
+              height={50}
+              className=""
+            />
+            {isAnimating && (
+                <Image
+                  src="/assets/food.png"
+                  alt="food"
+                  width={50}
+                  height={50}
+                  className="absolute z-50 animate-foodSlideUp delay-200"
+                />
+            )}
+          </div>
       </div>
     </div>
   );
