@@ -41,7 +41,7 @@ const Login = () => {
             <img src="/facebook.svg" alt="Facebook" className="w-12 h-12 hover:cursor-pointer" />
           </div>
           <p className="text-white">
-            Don't have an account?
+            Don&apos;t have an account?
             <Link href="/register" legacyBehavior>
                 <a className="font-bold hover:underline" style={{ marginLeft: '10px' }}>Sign Up Now</a>
             </Link>

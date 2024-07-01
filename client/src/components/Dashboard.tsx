@@ -33,7 +33,7 @@ const Dashboard: React.FC<PostListProps> = ({ posts }) => {
 							<div className="modal-box">
 								<div className="flex flex-col w-full">
 									<p className="text-2xl my-2">
-										TODAY'S QUEST
+										TODAY&apos;S QUEST
 									</p>
 									<QuestInfo
 										questName="Do 50 Pushups"
